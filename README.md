@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <a href="mailto:jeremy@neural-voice.ai"><img alt="Email" src="https://img.shields.io/badge/✉️ Email-jeremy%40neural--voice.ai-red?style=for-the-badge"></a>
+  <a href="mailto:jezalexandersmith@gmail.com"><img alt="Email" src="https://img.shields.io/badge/✉️ Email-jezalexandersmith%40gmail.com-red?style=for-the-badge"></a>
   <a href="https://www.linkedin.com/in/jsmithsales/"><img alt="LinkedIn" src="https://img.shields.io/badge/🔗 LinkedIn-jsmithsales-green?style=for-the-badge"></a>
 </p>
 
