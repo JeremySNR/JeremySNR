@@ -1,36 +1,73 @@
-<h1 align="center">👋 Hey, I’m Jeremy</h1>
+<h1 align="center">👋 Hey, I'm Jeremy</h1>
 <p align="center">
-  Founder & CEO of <a href="https://neural-voice.ai">Neural Voice</a> · Voice AI for Travel
+  <strong>AI Innovation Partner</strong> at <a href="https://www.travelcounsellors.com">Travel Counsellors</a> · Leading AI initiatives for travel tech
 </p>
 
 <p align="center">
-  <a href="https://neural-voice.ai"><img alt="Website" src="https://img.shields.io/badge/🌍 Website-neural--voice.ai-blue?style=for-the-badge"></a>
   <a href="mailto:jeremy@neural-voice.ai"><img alt="Email" src="https://img.shields.io/badge/✉️ Email-jeremy%40neural--voice.ai-red?style=for-the-badge"></a>
   <a href="https://www.linkedin.com/in/jsmithsales/"><img alt="LinkedIn" src="https://img.shields.io/badge/🔗 LinkedIn-jsmithsales-green?style=for-the-badge"></a>
 </p>
 
 ---
 
-### ✈️ What I Do
-I help **travel brands** automate phone conversations using lifelike AI voices.  
-No menus. No chatbots. Just natural, two-way voice in any language, 24/7.
+### 🚀 What I'm Building
+
+I lead the **AI team** at Travel Counsellors, where we're pushing the boundaries of AI in travel technology. My focus is on building production systems that combine **LLMs, voice AI, and semantic search** to create intelligent travel experiences.
+
+**Current Focus:**
+- **Local-first knowledge systems** with AI-native search
+- **Multi-agent AI architectures** for complex decision-making
+- **Voice AI integrations** for travel workflows
+- **Open-source tooling** for the AI community
 
 ---
 
-### 🚀 Focus Areas
-- Reduce wait times from 20 mins → 0  
-- Capture & qualify after-hours enquiries  
-- Handle flight disruption & rebooking flows  
-- Plug into CRMs and booking systems instantly  
+### 💻 Recent Projects
+
+#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
+A local-first knowledge base with industrial design. Built with **Svelte 5**, **Tauri**, and **Rust** - combining Notion's block editing with semantic search and AI assistance. Fully open-source, privacy-first architecture.
+
+#### 🤖 Quorum
+AI-powered deliberation system using multiple LLMs with adversarial peer-review. Explores how AI agents can collaborate and challenge each other's reasoning.
+
+#### 📊 AI Trading Lab
+Autonomous AI agents trading stocks with LLM-powered decision making. Experiments with agentic systems and financial modeling.
+
+#### ✈️ [Amadeus Flight Tool](https://github.com/JeremySNR/amadeus-flight-tool)
+TypeScript wrapper for Amadeus Flight Search API, designed for Vapi voice AI integrations. Production-ready tooling for travel voice assistants.
 
 ---
 
 ### 🛠️ Tech Stack
-TypeScript · Next.js · Node · Vercel · OpenAI · ElevenLabs · Deepgram · CCaaS integrations  
+
+**Languages:** TypeScript · Rust · Python  
+**Frontend:** Svelte 5 · Next.js · Tailwind CSS  
+**AI/ML:** OpenAI · Anthropic · Local LLMs · Embeddings  
+**Infrastructure:** Tauri · Vercel · Docker · CRDTs (Yjs)  
+**Travel APIs:** Amadeus · Voice AI (Vapi, ElevenLabs, Deepgram)
+
+---
+
+### 📈 What I'm Learning
+
+- **CRDTs & Local-First Architecture** - Building truly offline-capable apps
+- **Multi-Agent Systems** - Coordinating multiple AI agents for complex tasks
+- **Rust Performance** - Optimizing core systems for speed and safety
+- **Semantic Search** - Vector embeddings and hybrid search strategies
+
+---
+
+### 🌟 Open Source
+
+I believe in building in the open. Most of my work is on GitHub, and I'm always happy to collaborate on interesting projects. Check out **[Holocron](https://github.com/JeremySNR/holocron)** if you're interested in local-first knowledge bases or AI-native productivity tools.
 
 ---
 
 <p align="center">
-  <i>“People still pick up the phone when it matters.  
-  Voice should feel personal, instant and intelligent — not robotic.”</i>
+  <i>"Building AI systems that are intelligent, private, and actually useful."</i>
 </p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=JeremySNR&show_icons=true&theme=default&hide_border=true" alt="GitHub Stats" />
+</p>
+
