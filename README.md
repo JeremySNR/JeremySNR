@@ -1,81 +1,88 @@
-<h1 align="center">👋 Hey, I'm Jeremy</h1>
-<p align="center">
-  <strong>AI Innovation Partner</strong> at <a href="https://www.travelcounsellors.com">Travel Counsellors</a> · Leading enterprise AI strategy and product development
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="mailto:jezalexandersmith@gmail.com"><img alt="Email" src="https://img.shields.io/badge/✉️ Email-jezalexandersmith%40gmail.com-red?style=for-the-badge"></a>
-  <a href="https://www.linkedin.com/in/jsmithsales/"><img alt="LinkedIn" src="https://img.shields.io/badge/🔗 LinkedIn-jsmithsales-green?style=for-the-badge"></a>
-</p>
+# 👋 Jeremy Smith
 
----
+**AI Innovation Partner** at [Travel Counsellors](https://www.travelcounsellors.com)
 
-### 🚀 What I'm Building
+Leading enterprise AI strategy & product development · Building intelligent, private systems
 
-I lead **AI strategy and execution** at Travel Counsellors, a £1bn+ travel technology group. As Head of AI, I'm responsible for defining and delivering enterprise AI products that drive measurable commercial outcomes while maintaining ethical governance and responsible innovation.
+[![Email](https://img.shields.io/badge/Email-jezalexandersmith@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jezalexandersmith@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jsmithsales/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/JeremySNR)
 
-**At Work:**
-- **Enterprise AI Products** - Leading vision, design, and delivery of flagship AI platforms including TC Co-pilot and AI-driven customer experiences
-- **AI Strategy & Governance** - Defining "AI First" strategy across products and service lines, ensuring scalable, secure, and ethical AI adoption
-- **Multidisciplinary Teams** - Building high-performing AI capability blending product, data science, engineering, and innovation talent
-- **Commercial AI** - Partnering with business units to model ROI and track financial impact of AI initiatives across sales, service, and operations
-- **Augmented Intelligence** - Designing AI systems that enhance human capabilities rather than replace them, focusing on high-value interactions
-
-**In the Open:**
-- **Local-first knowledge systems** with AI-native search
-- **Multi-agent AI architectures** for complex decision-making
-- **Voice AI integrations** for travel workflows
-- **Open-source tooling** for the AI community
+</div>
 
 ---
 
-### 💻 Recent Projects
+### 💼 What I Do
+
+Leading **AI strategy and execution** at Travel Counsellors (£1bn+ travel tech group). Building enterprise AI products, leading multidisciplinary teams, and driving commercial outcomes through responsible innovation.
+
+**Focus Areas:** Enterprise AI Platforms · LLMs & GenAI · MLOps · AI Governance · Multi-Agent Systems
+
+---
+
+### 🚀 Featured Projects
+
+<table>
+<tr>
+<td width="50%">
 
 #### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
-A local-first knowledge base with industrial design. Built with **Svelte 5**, **Tauri**, and **Rust** - combining Notion's block editing with semantic search and AI assistance. Fully open-source, privacy-first architecture.
+Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
+
+</td>
+<td width="50%">
 
 #### 🤖 Quorum
-AI-powered deliberation system using multiple LLMs with adversarial peer-review. Explores how AI agents can collaborate and challenge each other's reasoning.
+Multi-LLM deliberation system with adversarial peer-review. Exploring agent collaboration.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
 
 #### 📊 AI Trading Lab
-Autonomous AI agents trading stocks with LLM-powered decision making. Experiments with agentic systems and financial modeling.
+Autonomous trading agents with LLM-powered decision making.
+
+</td>
+<td width="50%">
 
 #### ✈️ [Amadeus Flight Tool](https://github.com/JeremySNR/amadeus-flight-tool)
-TypeScript wrapper for Amadeus Flight Search API, designed for Vapi voice AI integrations. Production-ready tooling for travel voice assistants.
+TypeScript wrapper for Amadeus API. Built for voice AI integrations.
+
+</td>
+</tr>
+</table>
 
 ---
 
 ### 🛠️ Tech Stack
 
-**Languages:** TypeScript · Rust · Python  
-**Frontend:** Svelte 5 · Next.js · Tailwind CSS  
-**AI/ML:** LLMs (OpenAI, Anthropic) · LangChain · TensorFlow/PyTorch · MLOps · Embeddings · Local Models  
-**Enterprise:** Azure ML · Databricks · Snowflake · Enterprise AI Platforms  
-**Infrastructure:** Tauri · Vercel · Docker · CRDTs (Yjs) · Kubernetes  
-**Travel APIs:** Amadeus · Voice AI (Vapi, ElevenLabs, Deepgram)
-
----
-
-### 📈 What I'm Learning
-
-- **CRDTs & Local-First Architecture** - Building truly offline-capable apps
-- **Multi-Agent Systems** - Coordinating multiple AI agents for complex tasks
-- **Rust Performance** - Optimizing core systems for speed and safety
-- **Semantic Search** - Vector embeddings and hybrid search strategies
-
----
-
-### 🌟 Open Source
-
-I believe in building in the open. Most of my work is on GitHub, and I'm always happy to collaborate on interesting projects. Check out **[Holocron](https://github.com/JeremySNR/holocron)** if you're interested in local-first knowledge bases or AI-native productivity tools.
-
----
-
 <p align="center">
-  <i>"Building AI systems that are intelligent, private, and actually useful."</i>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white" alt="Svelte" />
+  <br />
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI" />
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain" />
+  <img src="https://img.shields.io/badge/Azure_ML-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure ML" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
 </p>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=JeremySNR&show_icons=true&theme=default&hide_border=true" alt="GitHub Stats" />
-</p>
+---
 
+<div align="center">
+
+### 📊 GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=JeremySNR&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=58A6FF&text_color=C9D1D9)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=JeremySNR&layout=compact&theme=radical&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9)
+
+---
+
+*Building AI systems that are intelligent, private, and actually useful.*
+
+</div>
