@@ -1,6 +1,6 @@
 <h1 align="center">👋 Hey, I'm Jeremy</h1>
 <p align="center">
-  <strong>AI Innovation Partner</strong> at <a href="https://www.travelcounsellors.com">Travel Counsellors</a> · Leading AI initiatives for travel tech
+  <strong>AI Innovation Partner</strong> at <a href="https://www.travelcounsellors.com">Travel Counsellors</a> · Leading enterprise AI strategy and product development
 </p>
 
 <p align="center">
@@ -12,9 +12,16 @@
 
 ### 🚀 What I'm Building
 
-I lead the **AI team** at Travel Counsellors, where we're pushing the boundaries of AI in travel technology. My focus is on building production systems that combine **LLMs, voice AI, and semantic search** to create intelligent travel experiences.
+I lead **AI strategy and execution** at Travel Counsellors, a £1bn+ travel technology group. As Head of AI, I'm responsible for defining and delivering enterprise AI products that drive measurable commercial outcomes while maintaining ethical governance and responsible innovation.
 
-**Current Focus:**
+**At Work:**
+- **Enterprise AI Products** - Leading vision, design, and delivery of flagship AI platforms including TC Co-pilot and AI-driven customer experiences
+- **AI Strategy & Governance** - Defining "AI First" strategy across products and service lines, ensuring scalable, secure, and ethical AI adoption
+- **Multidisciplinary Teams** - Building high-performing AI capability blending product, data science, engineering, and innovation talent
+- **Commercial AI** - Partnering with business units to model ROI and track financial impact of AI initiatives across sales, service, and operations
+- **Augmented Intelligence** - Designing AI systems that enhance human capabilities rather than replace them, focusing on high-value interactions
+
+**In the Open:**
 - **Local-first knowledge systems** with AI-native search
 - **Multi-agent AI architectures** for complex decision-making
 - **Voice AI integrations** for travel workflows
@@ -42,8 +49,9 @@ TypeScript wrapper for Amadeus Flight Search API, designed for Vapi voice AI int
 
 **Languages:** TypeScript · Rust · Python  
 **Frontend:** Svelte 5 · Next.js · Tailwind CSS  
-**AI/ML:** OpenAI · Anthropic · Local LLMs · Embeddings  
-**Infrastructure:** Tauri · Vercel · Docker · CRDTs (Yjs)  
+**AI/ML:** LLMs (OpenAI, Anthropic) · LangChain · TensorFlow/PyTorch · MLOps · Embeddings · Local Models  
+**Enterprise:** Azure ML · Databricks · Snowflake · Enterprise AI Platforms  
+**Infrastructure:** Tauri · Vercel · Docker · CRDTs (Yjs) · Kubernetes  
 **Travel APIs:** Amadeus · Voice AI (Vapi, ElevenLabs, Deepgram)
 
 ---
