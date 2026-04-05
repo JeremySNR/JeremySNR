@@ -1,0 +1,42 @@
+{
+  "name": "snug",
+  "version": "0.1.0",
+  "description": "Fit prioritised content into a token budget",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "llm",
+    "context-window",
+    "token-budget",
+    "prompt",
+    "packing"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
