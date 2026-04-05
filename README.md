@@ -28,22 +28,22 @@ Leading **AI strategy and execution** at Travel Counsellors (£1bn+ travel tech 
 <tr>
 <td width="50%">
 
-#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
-Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
+#### 📦 [snug](https://github.com/JeremySNR/snug)
+Zero-dependency TypeScript primitive for fitting prioritised content into a token budget. Built to be vendored into LLM frameworks.
 
 </td>
 <td width="50%">
 
-#### 🤖 Quorum
-Multi-LLM deliberation system with adversarial peer-review. Exploring agent collaboration.
+#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
+Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-#### 📊 AI Trading Lab
-Autonomous trading agents with LLM-powered decision making.
+#### 🤖 Quorum
+Multi-LLM deliberation system with adversarial peer-review. Exploring agent collaboration.
 
 </td>
 <td width="50%">
