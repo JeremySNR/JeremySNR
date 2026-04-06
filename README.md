@@ -34,8 +34,8 @@ Zero-dependency TypeScript primitive for fitting prioritised content into a toke
 </td>
 <td width="50%">
 
-#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
-Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
+#### 🧠 [Pluribus](https://github.com/JeremySNR/Pluribus)
+Multi-agent AI hive mind with cross-inhibition. Agents debate, challenge each other, and converge on a shared answer — with one permanent dissenter who cannot be silenced.
 
 </td>
 </tr>
@@ -48,8 +48,8 @@ Ecosystem of adapters for the snug token budget library — drop-in fit for Open
 </td>
 <td width="50%">
 
-#### ✈️ [Amadeus Flight Tool](https://github.com/JeremySNR/amadeus-flight-tool)
-TypeScript wrapper for Amadeus API. Built for voice AI integrations.
+#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
+Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
 
 </td>
 </tr>
