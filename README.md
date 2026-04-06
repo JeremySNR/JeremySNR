@@ -34,16 +34,16 @@ Zero-dependency TypeScript primitive for fitting prioritised content into a toke
 </td>
 <td width="50%">
 
-#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
-Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
+#### 🔢 [snug-tiktoken](https://github.com/JeremySNR/snug-tiktoken)
+snug pre-wired with tiktoken. Accurate token counting for OpenAI and Anthropic models with no setup.
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-#### 🤖 Quorum
-Multi-LLM deliberation system with adversarial peer-review. Exploring agent collaboration.
+#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
+Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
 
 </td>
 <td width="50%">
