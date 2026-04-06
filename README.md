@@ -29,21 +29,21 @@ Leading **AI strategy and execution** at Travel Counsellors (£1bn+ travel tech 
 <td width="50%">
 
 #### 📦 [snug](https://github.com/JeremySNR/snug)
-Zero-dependency TypeScript primitive for fitting prioritised content into a token budget. Built to be vendored into LLM frameworks.
+Zero-dependency TypeScript primitive for fitting prioritised content into a token budget. Core of the snug ecosystem.
 
 </td>
 <td width="50%">
 
-#### 🔢 [snug-tiktoken](https://github.com/JeremySNR/snug-tiktoken)
-snug pre-wired with tiktoken. Accurate token counting for OpenAI and Anthropic models with no setup.
+#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
+Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
-Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
+#### 🤖 [snug-openai](https://github.com/JeremySNR/snug-openai) · [snug-anthropic](https://github.com/JeremySNR/snug-anthropic) · [snug-tiktoken](https://github.com/JeremySNR/snug-tiktoken)
+Ecosystem of adapters for the snug token budget library — drop-in fit for OpenAI, Anthropic, and tiktoken.
 
 </td>
 <td width="50%">
