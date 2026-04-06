@@ -48,8 +48,8 @@ Ecosystem of adapters for the snug token budget library — drop-in fit for Open
 </td>
 <td width="50%">
 
-#### 🌌 [Holocron](https://github.com/JeremySNR/holocron)
-Local-first knowledge base with AI-native search. Built with Svelte 5, Tauri & Rust.
+#### 🔀 [converge](https://github.com/JeremySNR/converge)
+Zero-dependency TypeScript primitive for converting LLM message arrays between provider formats. OpenAI ↔ Anthropic ↔ Gemini. Pure data transformation, no API calls.
 
 </td>
 </tr>
