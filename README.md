@@ -34,8 +34,11 @@ Zero-dependency TypeScript primitive for fitting prioritised content into a toke
 </td>
 <td width="50%">
 
-#### 🧠 [Pluribus](https://github.com/JeremySNR/Pluribus)
-Multi-agent AI hive mind with cross-inhibition. Agents debate, challenge each other, and converge on a shared answer — with one permanent dissenter who cannot be silenced.
+#### 🧠 Pluribus — Multi-Agent Research
+
+**[Phase 1](https://github.com/JeremySNR/Pluribus)** · Text-level blackboard hive with cross-inhibition and a structurally protected dissenter (Carol). Agents debate, challenge each other, and converge — with one voice that cannot be silenced.
+
+**[Phase 2](https://github.com/JeremySNR/Pluribus-P2)** · Agents communicate through a shared continuous-valued latent buffer rather than text, using BAPC codecs, TIES-Resolve conflict resolution, and damped fixed-point iteration. Emergent collective representations confirmed at GPT-2 and 7B scale.
 
 </td>
 </tr>
