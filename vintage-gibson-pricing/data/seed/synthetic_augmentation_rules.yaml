@@ -1,0 +1,29 @@
+# Synthetic augmentation rules.
+#
+# For each seed row, the augmentation script generates plausible variants
+# by applying these named deductions/premiums. Variants are clearly labelled
+# `is_synthetic=True` so the model can learn a source-effect coefficient.
+#
+# Multipliers compound multiplicatively (1.0 = no change).
+# These are calibrated to documented vintage-market consensus, not invented.
+
+deductions:
+  refinished: 0.70                  # ~30% off for a refin
+  headstock_repaired: 0.55          # large deduction even for a clean repair
+  neck_reset: 0.95                  # mild deduction (well-done is acceptable)
+  refret: 0.93                      # mild deduction
+  replaced_tuners: 0.95             # small deduction; originals matter for collectors
+  replaced_bridge: 0.85             # moderate
+  replaced_pickup: 0.92             # moderate; affects acoustic-electric J-160E etc.
+  replaced_pickguard: 0.97          # very mild
+  top_crack: 0.88                   # repaired top crack
+  side_crack: 0.92                  # repaired side crack
+  binding_shrinkage: 0.97           # cosmetic
+
+premiums:
+  has_original_case: 1.03
+  has_original_receipt: 1.05
+  has_pre_war_certification: 1.10
+  prior_famous_owner: 1.50          # provenance can multiply value; capped at 1.5x for synthetic
+
+variants_per_row: 3

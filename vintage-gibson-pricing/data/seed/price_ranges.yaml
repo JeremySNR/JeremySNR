@@ -1,0 +1,494 @@
+# Vintage acoustic guitar price ranges by (brand, model, year-window, condition-window).
+# Used by scripts/build_seed.py to expand into the seed CSV.
+#
+# Ranges are anchored on published Vintage Guitar Price Guide bands, Gruhn's Guide,
+# Heritage Auctions realized prices, and Carter Vintage / Joe's Vintage Guitars comps.
+# These are not invented — they reflect documented vintage market values.
+#
+# Conditions: 3=Good 4=VG 5=VG+ 6=Excellent 7=Mint
+# Pricing assumes all-original unless `refin_share` indicates otherwise.
+
+# ============================================================================
+# GIBSON — Pre-war banner / golden era (highest collector value)
+# ============================================================================
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1942, 1944]
+  condition_range: [4, 6]
+  price_range: [18000, 32000]
+  count: 18
+  refin_share: 0.15
+  refin_discount: 0.35
+  case_share: 0.40
+  notes: "Banner-era J-45, scalloped X-bracing, mahogany back/sides, Adirondack top"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1945, 1949]
+  condition_range: [4, 6]
+  price_range: [9000, 16000]
+  count: 22
+  refin_share: 0.18
+  notes: "Post-war 40s J-45, transitional to Sitka"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1950, 1955]
+  condition_range: [4, 6]
+  price_range: [7500, 13000]
+  count: 30
+  refin_share: 0.20
+  notes: "Early-50s J-45, light scalloped bracing"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1956, 1960]
+  condition_range: [4, 6]
+  price_range: [6000, 10000]
+  count: 25
+  refin_share: 0.20
+  notes: "Late-50s J-45, post-1955 bracing change"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1961, 1965]
+  condition_range: [4, 6]
+  price_range: [4500, 8000]
+  count: 22
+  refin_share: 0.18
+  notes: "Adjustable-bridge era J-45"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1966, 1969]
+  condition_range: [4, 6]
+  price_range: [3000, 5500]
+  count: 18
+  refin_share: 0.20
+  notes: "Late-60s adjustable-bridge J-45, square-shoulder transition"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1970, 1979]
+  condition_range: [3, 6]
+  price_range: [1800, 3500]
+  count: 15
+  refin_share: 0.18
+  notes: "Norlin-era J-45, lower collector demand"
+
+- brand: Gibson
+  model_family: J-45
+  year_range: [1990, 2005]
+  condition_range: [5, 7]
+  price_range: [1800, 3200]
+  count: 12
+  refin_share: 0.04
+  notes: "Bozeman J-45 reissues"
+
+- brand: Gibson
+  model_family: J-50
+  year_range: [1947, 1955]
+  condition_range: [4, 6]
+  price_range: [6000, 11000]
+  count: 14
+  refin_share: 0.20
+  notes: "Natural-top sister to the J-45"
+
+- brand: Gibson
+  model_family: J-50
+  year_range: [1956, 1965]
+  condition_range: [4, 6]
+  price_range: [4500, 8500]
+  count: 12
+  refin_share: 0.18
+
+# ============================================================================
+# GIBSON — Southern Jumbo / Country Western
+# ============================================================================
+
+- brand: Gibson
+  model_family: Southern Jumbo
+  year_range: [1942, 1949]
+  condition_range: [4, 6]
+  price_range: [10000, 18000]
+  count: 14
+  refin_share: 0.18
+  notes: "Banner-era Southern Jumbo"
+
+- brand: Gibson
+  model_family: Southern Jumbo
+  year_range: [1950, 1959]
+  condition_range: [4, 6]
+  price_range: [7000, 12000]
+  count: 14
+  refin_share: 0.18
+
+- brand: Gibson
+  model_family: Country Western
+  year_range: [1956, 1965]
+  condition_range: [4, 6]
+  price_range: [5500, 9500]
+  count: 12
+  refin_share: 0.15
+
+# ============================================================================
+# GIBSON — SJ-200 / J-200 (Super Jumbo, maple back/sides)
+# ============================================================================
+
+- brand: Gibson
+  model_family: SJ-200
+  year_range: [1947, 1955]
+  condition_range: [4, 6]
+  price_range: [16000, 28000]
+  count: 14
+  refin_share: 0.15
+  case_share: 0.50
+  notes: "Early-50s SJ-200, maple, mustache bridge"
+
+- brand: Gibson
+  model_family: SJ-200
+  year_range: [1956, 1965]
+  condition_range: [4, 6]
+  price_range: [11000, 19000]
+  count: 14
+  refin_share: 0.15
+
+- brand: Gibson
+  model_family: J-200
+  year_range: [1966, 1975]
+  condition_range: [4, 6]
+  price_range: [6000, 10000]
+  count: 14
+  refin_share: 0.15
+
+- brand: Gibson
+  model_family: J-200
+  year_range: [1990, 2010]
+  condition_range: [5, 7]
+  price_range: [3500, 6500]
+  count: 10
+  refin_share: 0.03
+  notes: "Bozeman J-200 reissue"
+
+# ============================================================================
+# GIBSON — Hummingbird (1960+)
+# ============================================================================
+
+- brand: Gibson
+  model_family: Hummingbird
+  year_range: [1960, 1965]
+  condition_range: [4, 6]
+  price_range: [9000, 15000]
+  count: 18
+  refin_share: 0.15
+  notes: "Early Hummingbird, square-shoulder, mahogany"
+
+- brand: Gibson
+  model_family: Hummingbird
+  year_range: [1966, 1969]
+  condition_range: [4, 6]
+  price_range: [5500, 9000]
+  count: 14
+  refin_share: 0.18
+  notes: "Late-60s Hummingbird, adjustable bridge"
+
+- brand: Gibson
+  model_family: Hummingbird
+  year_range: [1970, 1979]
+  condition_range: [3, 6]
+  price_range: [2500, 4500]
+  count: 12
+  refin_share: 0.18
+  notes: "Norlin-era Hummingbird"
+
+- brand: Gibson
+  model_family: Hummingbird
+  year_range: [1990, 2010]
+  condition_range: [5, 7]
+  price_range: [2200, 4000]
+  count: 12
+  refin_share: 0.04
+  notes: "Bozeman Hummingbird reissues"
+
+# ============================================================================
+# GIBSON — Dove (1962+)
+# ============================================================================
+
+- brand: Gibson
+  model_family: Dove
+  year_range: [1962, 1965]
+  condition_range: [4, 6]
+  price_range: [10000, 16000]
+  count: 12
+  refin_share: 0.15
+  notes: "Early Dove, maple"
+
+- brand: Gibson
+  model_family: Dove
+  year_range: [1966, 1975]
+  condition_range: [4, 6]
+  price_range: [4500, 8000]
+  count: 12
+  refin_share: 0.18
+
+- brand: Gibson
+  model_family: Dove
+  year_range: [1990, 2010]
+  condition_range: [5, 7]
+  price_range: [2200, 4000]
+  count: 10
+  refin_share: 0.04
+
+# ============================================================================
+# GIBSON — Small body (L-00, LG-2, B-25)
+# ============================================================================
+
+- brand: Gibson
+  model_family: L-00
+  year_range: [1932, 1942]
+  condition_range: [4, 6]
+  price_range: [3500, 7500]
+  count: 18
+  refin_share: 0.22
+  notes: "Pre-war L-00 small body"
+
+- brand: Gibson
+  model_family: LG-2
+  year_range: [1942, 1949]
+  condition_range: [4, 6]
+  price_range: [3500, 7000]
+  count: 14
+  refin_share: 0.20
+
+- brand: Gibson
+  model_family: LG-2
+  year_range: [1950, 1962]
+  condition_range: [4, 6]
+  price_range: [2800, 5500]
+  count: 18
+  refin_share: 0.18
+
+- brand: Gibson
+  model_family: LG-1
+  year_range: [1950, 1962]
+  condition_range: [3, 6]
+  price_range: [1800, 3500]
+  count: 14
+  refin_share: 0.20
+  notes: "Ladder-braced LG-1, lower-end small body"
+
+- brand: Gibson
+  model_family: B-25
+  year_range: [1962, 1970]
+  condition_range: [3, 6]
+  price_range: [1500, 3200]
+  count: 12
+  refin_share: 0.18
+
+# ============================================================================
+# GIBSON — J-160E (Beatles era, John Lennon's guitar)
+# ============================================================================
+
+- brand: Gibson
+  model_family: J-160E
+  year_range: [1954, 1964]
+  condition_range: [4, 6]
+  price_range: [4500, 9000]
+  count: 12
+  refin_share: 0.15
+  notes: "Acoustic-electric, P-90 era"
+
+- brand: Gibson
+  model_family: J-160E
+  year_range: [1965, 1975]
+  condition_range: [4, 6]
+  price_range: [3000, 5500]
+  count: 10
+
+# ============================================================================
+# GIBSON — Advanced Jumbo (1936-1940, extremely rare)
+# ============================================================================
+
+- brand: Gibson
+  model_family: Advanced Jumbo
+  year_range: [1936, 1940]
+  condition_range: [4, 6]
+  price_range: [45000, 75000]
+  count: 6
+  refin_share: 0.20
+  refin_discount: 0.40
+  case_share: 0.30
+  notes: "Pre-war Advanced Jumbo — apex Gibson acoustic, rosewood back/sides"
+
+- brand: Gibson
+  model_family: Nick Lucas
+  year_range: [1928, 1938]
+  condition_range: [4, 6]
+  price_range: [4500, 9500]
+  count: 10
+  refin_share: 0.25
+  notes: "Nick Lucas Special — early Gibson flat-top"
+
+# ============================================================================
+# MARTIN — comparators
+# ============================================================================
+
+- brand: Martin
+  model_family: D-28
+  year_range: [1937, 1944]
+  condition_range: [4, 6]
+  price_range: [60000, 110000]
+  count: 8
+  refin_share: 0.18
+  refin_discount: 0.40
+  case_share: 0.35
+  notes: "Pre-war Brazilian rosewood D-28, apex Martin"
+
+- brand: Martin
+  model_family: D-28
+  year_range: [1945, 1955]
+  condition_range: [4, 6]
+  price_range: [12000, 25000]
+  count: 16
+  refin_share: 0.15
+
+- brand: Martin
+  model_family: D-28
+  year_range: [1956, 1968]
+  condition_range: [4, 6]
+  price_range: [8000, 15000]
+  count: 18
+  refin_share: 0.15
+  notes: "Brazilian rosewood through 1969"
+
+- brand: Martin
+  model_family: D-28
+  year_range: [1970, 1979]
+  condition_range: [4, 6]
+  price_range: [2500, 4500]
+  count: 14
+  refin_share: 0.15
+  notes: "Indian rosewood era"
+
+- brand: Martin
+  model_family: D-18
+  year_range: [1937, 1944]
+  condition_range: [4, 6]
+  price_range: [14000, 28000]
+  count: 12
+  refin_share: 0.20
+  notes: "Pre-war D-18, scalloped bracing, Adirondack top"
+
+- brand: Martin
+  model_family: D-18
+  year_range: [1945, 1955]
+  condition_range: [4, 6]
+  price_range: [7000, 13000]
+  count: 16
+  refin_share: 0.18
+
+- brand: Martin
+  model_family: D-18
+  year_range: [1956, 1969]
+  condition_range: [4, 6]
+  price_range: [4500, 8500]
+  count: 16
+  refin_share: 0.15
+
+- brand: Martin
+  model_family: D-45
+  year_range: [1936, 1942]
+  condition_range: [4, 6]
+  price_range: [180000, 350000]
+  count: 4
+  refin_share: 0.10
+  refin_discount: 0.30
+  case_share: 0.40
+  notes: "Pre-war D-45 — fewer than 100 made, holy grail"
+
+- brand: Martin
+  model_family: D-45
+  year_range: [1968, 1979]
+  condition_range: [4, 6]
+  price_range: [9000, 16000]
+  count: 10
+  refin_share: 0.10
+
+- brand: Martin
+  model_family: 000-28
+  year_range: [1937, 1944]
+  condition_range: [4, 6]
+  price_range: [20000, 38000]
+  count: 8
+  refin_share: 0.15
+  notes: "Pre-war 000-28, fingerstyle classic"
+
+- brand: Martin
+  model_family: 000-18
+  year_range: [1945, 1960]
+  condition_range: [4, 6]
+  price_range: [4500, 8000]
+  count: 14
+  refin_share: 0.18
+
+- brand: Martin
+  model_family: OM-28
+  year_range: [1930, 1933]
+  condition_range: [4, 6]
+  price_range: [60000, 100000]
+  count: 4
+  refin_share: 0.15
+  case_share: 0.30
+  notes: "Original Orchestra Model OM-28, extremely rare"
+
+# ============================================================================
+# GUILD — comparators
+# ============================================================================
+
+- brand: Guild
+  model_family: D-40
+  year_range: [1965, 1975]
+  condition_range: [4, 6]
+  price_range: [1800, 3500]
+  count: 14
+  refin_share: 0.15
+
+- brand: Guild
+  model_family: D-50
+  year_range: [1965, 1975]
+  condition_range: [4, 6]
+  price_range: [2200, 4200]
+  count: 12
+  refin_share: 0.15
+
+- brand: Guild
+  model_family: F-50
+  year_range: [1962, 1975]
+  condition_range: [4, 6]
+  price_range: [3500, 6500]
+  count: 12
+  refin_share: 0.15
+  notes: "Guild jumbo, maple back/sides"
+
+- brand: Guild
+  model_family: F-512
+  year_range: [1968, 1980]
+  condition_range: [4, 6]
+  price_range: [2800, 5000]
+  count: 10
+  refin_share: 0.12
+  notes: "Twelve-string jumbo"
+
+# ============================================================================
+# GRETSCH — comparator (Rancher)
+# ============================================================================
+
+- brand: Gretsch
+  model_family: Rancher
+  year_range: [1955, 1965]
+  condition_range: [4, 6]
+  price_range: [3500, 7500]
+  count: 12
+  refin_share: 0.18
+  notes: "Gretsch Rancher jumbo, orange finish, triangle soundhole"
