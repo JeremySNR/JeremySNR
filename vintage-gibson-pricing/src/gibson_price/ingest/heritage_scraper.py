@@ -97,32 +97,22 @@ def _parse_row(row, brand: str) -> GuitarListing | None:
     except (ValueError, IndexError):
         return None
 
+    from gibson_price.ingest.title_parser import parse_title
+    parsed = parse_title(title)
+    if parsed.brand is None or parsed.model_family is None or parsed.confidence < 0.4:
+        return None
+
     lot_id = row.get("data-lot-id") or title[:32]
     return GuitarListing(
         source="heritage",
         source_listing_id=str(lot_id),
-        brand=brand,  # type: ignore[arg-type]
-        model_family=_infer_model(title),
-        year=_infer_year(title),
+        brand=parsed.brand,  # type: ignore[arg-type]
+        model_family=parsed.model_family,
+        year=parsed.year,
         price_usd=price_usd,
+        price_confidence="actual",
         is_sold=True,
         sold_date=date.today(),
         description=title,
+        extraction_confidence=parsed.confidence,
     )
-
-
-def _infer_model(title: str) -> str:
-    upper = title.upper()
-    for candidate in ["J-45", "J-50", "SJ-200", "J-200", "HUMMINGBIRD", "DOVE",
-                      "SOUTHERN JUMBO", "L-00", "LG-2", "D-28", "D-18", "D-45",
-                      "000-28", "000-18", "ADVANCED JUMBO"]:
-        if candidate in upper:
-            return candidate.title().replace("Sj-200", "SJ-200").replace("J-", "J-").replace("L-00", "L-00")
-    return "Unknown"
-
-
-def _infer_year(title: str) -> int | None:
-    import re
-
-    match = re.search(r"\b(19\d{2}|20[0-2]\d)\b", title)
-    return int(match.group(1)) if match else None

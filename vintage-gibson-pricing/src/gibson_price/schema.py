@@ -21,8 +21,13 @@ Source = Literal[
     "heritage",
     "vg_guide",
     "dealer_archive",
+    "dealer_shopify",
+    "dealer_custom",
+    "vintage_and_rare",
     "synthetic",
 ]
+
+PriceConfidence = Literal["actual", "asking", "inferred"]
 
 GIBSON_MODELS = {
     "J-45", "J-50", "J-160E", "J-180", "J-200", "SJ-200",
@@ -99,12 +104,16 @@ class GuitarListing(BaseModel):
 
     # Listing metadata
     price_usd: float | None = None
+    price_confidence: PriceConfidence | None = None
     is_sold: bool = False
     sold_date: date | None = None
     listing_date: date | None = None
     description: str | None = None
     url: str | None = None
     is_synthetic: bool = False
+
+    # Quality control for parsed listings (regex 1.0, fuzzy 0.5-0.95, fallback < 0.5)
+    extraction_confidence: float = 1.0
 
 
 class FeatureRow(BaseModel):

@@ -84,25 +84,63 @@ gibson-price/
 ├── scripts/
 │   ├── build_seed.py          # generates the seed CSV
 │   ├── train.py               # train + eval report
-│   └── ingest.py              # pull from a chosen live source
+│   ├── ingest.py              # pull from a single chosen live source
+│   └── run_all_ingest.py      # orchestrator: every dealer + Heritage + Wayback diff
 ├── notebooks/                 # EDA + SHAP analysis
-├── tests/                     # serial dating, feature engineering, model smoke tests
+├── tests/                     # 39 tests: serial dating, features, title parsing, wayback diff, model
 ├── reports/eval.html          # auto-generated calibration / per-family MAPE report
 ├── MODEL_CARD.md              # data provenance, biases, intended use, disclaimers
+├── DEALER_POLICY.md           # per-source ToS posture + opt-out instructions
 └── Dockerfile                 # for Streamlit Cloud / Hugging Face Spaces
 ```
 
 ## Data sources
 
-| Source | Type | Notes |
-| --- | --- | --- |
-| Seed CSV (`vg_guide`) | Calibration anchor (committed) | Expanded from `price_ranges.yaml`, anchored on Vintage Guitar Price Guide, Gruhn's Guide, Joe's Vintage / Carter Vintage public comps, Heritage realised prices |
-| Reverb API | Active asking prices | Requires `REVERB_API_TOKEN` |
-| Heritage Auctions archive | Realised auction prices (premium tier) | Public crawl with robots.txt respect |
-| Dealer archive (Wayback) | Gruhn / Carter / Elderly / Folkway snapshots | Sold-state inferred via snapshot diff |
-| Reverb Price Guide scrape | **Disabled by default** | Reverb ToS prohibits scraping; gated behind `REVERB_SCRAPER_ENABLED=1`, personal research use only |
+The ingest layer is built around a single dealer registry
+(`src/gibson_price/ingest/dealers/registry.py`). Adding a Shopify-based
+dealer is one line; adding a custom-CMS dealer is one ~60-line file plus
+one registry entry.
 
-See [`MODEL_CARD.md`](MODEL_CARD.md) for known biases and full provenance.
+### Live-pull sources (each writes JSONL + manifest to `data/raw/`)
+
+| Source | Module | Mode | Notes |
+| --- | --- | --- | --- |
+| **Carter Vintage Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Acquired Norman's in 2024 |
+| **Norman's Rare Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | |
+| **Emerald City Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Seattle |
+| **Imperial Vintage Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Los Angeles |
+| **Wildwood Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Louisville, CO |
+| **Gruhn Guitars** | `dealers.custom.gruhn` | Custom CMS / BeautifulSoup | |
+| **Elderly Instruments** | `dealers.custom.elderly` | Custom CMS / BeautifulSoup | Structured serial-number fields when present |
+| **The Music Emporium** | `dealers.custom.music_emporium` | Magento / BeautifulSoup | |
+| **Vintage And Rare** | `dealers.custom.vintage_and_rare` | Multi-dealer aggregator | Indexes dozens of small dealers worldwide |
+| **Heritage Auctions** | `heritage_scraper` | HTML scrape of public archive | Realised premium-tier auction prices |
+| **Reverb API** | `reverb_api` | Official OAuth API | Active listings (asking prices); requires `REVERB_API_TOKEN` |
+| **Wayback Machine** | `dealer_archive` + `wayback` | CDX timemap + snapshot diff | Infers sold items: present in T1, gone for ≥2 consecutive snapshots ⇒ `price_confidence="inferred"` |
+| **Reverb Price Guide scrape** | `reverb_scraper` | **Disabled by default** | Reverb ToS prohibits scraping; gated behind `REVERB_SCRAPER_ENABLED=1` |
+
+### Committed calibration anchor
+
+| Source | Module | Notes |
+| --- | --- | --- |
+| **Vintage Guitar Price Guide seed CSV** | `vg_price_guide` | 684 rows hand-curated from published VG Price Guide bands, Gruhn's Guide, Joe's Vintage / Carter Vintage public comps, Heritage realised prices |
+
+See [`MODEL_CARD.md`](MODEL_CARD.md) for known biases and [`DEALER_POLICY.md`](DEALER_POLICY.md) for the per-source ToS posture and opt-out process.
+
+### Running the orchestrator
+
+```bash
+# Pull from every enabled source (writes data/raw/<source>.jsonl + .manifest.json)
+python scripts/run_all_ingest.py
+
+# Just one or two sources
+python scripts/run_all_ingest.py --only carter_vintage,gruhn
+
+# Skip the slow steps
+python scripts/run_all_ingest.py --skip-wayback --skip-heritage
+```
+
+Each source writes a manifest with timing, count, and errors — `cat data/raw/*.manifest.json` shows source health without re-running. Sources degrade gracefully on robots.txt block or HTTP errors (manifest captures the error, run continues).
 
 ## What it is **not**
 
