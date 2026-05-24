@@ -48,6 +48,9 @@ The full stack:
 | Bias | **Duan-smearing** back-transform from log to USD | Avoids the systematic underestimate from naive `exp()` |
 | Explain | **SHAP TreeExplainer** rescaled to USD contributions | One sentence + a table per prediction |
 | Split | **Forward-chaining time CV** (oldest train, newest holdout) | The 2020–22 COVID spike makes random k-fold leaky |
+| Compound mods | Structural-alteration features (top_replaced, neck_replaced, rebraced, frankenguitar...) + era-distance | Captures "what if a 40s guitar was retopped in the 60s" — period-correct vs modern-repro replacements get distinct deductions |
+| Market index | **Hedonic Case-Shiller-style index** (per brand × model_family, quarterly) | Decomposes prices into stable feature effects + time effects; the time series is what we forecast |
+| Forecast | **Ridge regression on the index** with optional FRED macro regressors (SP500, DGS10, CPI, M2) + adaptive conformal bands | Honest about data limits — refuses to forecast when <8 periods of history |
 
 ## Quickstart
 
@@ -103,20 +106,22 @@ one registry entry.
 
 ### Live-pull sources (each writes JSONL + manifest to `data/raw/`)
 
+**23 dealers** in the registry, dispatched by `platform`:
+
+| Platform | Strategy | Code path | Dealers |
+| --- | --- | --- | --- |
+| `shopify` | Public `/products.json` endpoint (no scraping needed) | `dealers.shopify.fetch_products` | Carter Vintage, Norman's Rare, Emerald City, Imperial Vintage, Wildwood, Dream, Retrofret, Lark Street |
+| `generic` | **sitemap.xml + JSON-LD** — adding a dealer = one line in the registry | `dealers.generic.fetch_via_sitemap_jsonld` | Mass Street, The Twelfth Fret, TR Crandall, Folkway, Vintage Instruments (Philly), Acoustic Vibes, Mahar's, Joe's Vintage, True Vintage Guitar, Edgewater, CME Vintage |
+| `custom` | Bespoke parser for sites that don't expose JSON-LD | `dealers.custom.*` | Gruhn, Elderly, The Music Emporium, Vintage And Rare (aggregator) |
+
+Plus four cross-cutting sources:
+
 | Source | Module | Mode | Notes |
 | --- | --- | --- | --- |
-| **Carter Vintage Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Acquired Norman's in 2024 |
-| **Norman's Rare Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | |
-| **Emerald City Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Seattle |
-| **Imperial Vintage Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Los Angeles |
-| **Wildwood Guitars** | `dealers.shopify` (registry) | Shopify `/products.json` | Louisville, CO |
-| **Gruhn Guitars** | `dealers.custom.gruhn` | Custom CMS / BeautifulSoup | |
-| **Elderly Instruments** | `dealers.custom.elderly` | Custom CMS / BeautifulSoup | Structured serial-number fields when present |
-| **The Music Emporium** | `dealers.custom.music_emporium` | Magento / BeautifulSoup | |
-| **Vintage And Rare** | `dealers.custom.vintage_and_rare` | Multi-dealer aggregator | Indexes dozens of small dealers worldwide |
 | **Heritage Auctions** | `heritage_scraper` | HTML scrape of public archive | Realised premium-tier auction prices |
 | **Reverb API** | `reverb_api` | Official OAuth API | Active listings (asking prices); requires `REVERB_API_TOKEN` |
 | **Wayback Machine** | `dealer_archive` + `wayback` | CDX timemap + snapshot diff | Infers sold items: present in T1, gone for ≥2 consecutive snapshots ⇒ `price_confidence="inferred"` |
+| **Common Crawl** | `common_crawl` + `dealers.generic.fetch_via_common_crawl` | CDX URL Index + WARC byte-range S3 fetch | **Historical backfill across every dealer with `common_crawl_domain` set.** 10+ years of snapshots, free, no site contact — the single biggest unlock for "every guitar ever sold online" |
 | **Reverb Price Guide scrape** | `reverb_scraper` | **Disabled by default** | Reverb ToS prohibits scraping; gated behind `REVERB_SCRAPER_ENABLED=1` |
 
 ### Committed calibration anchor
@@ -138,6 +143,9 @@ python scripts/run_all_ingest.py --only carter_vintage,gruhn
 
 # Skip the slow steps
 python scripts/run_all_ingest.py --skip-wayback --skip-heritage
+
+# Historical-only run: don't touch live dealer sites, only pull Common Crawl
+python scripts/run_all_ingest.py --common-crawl-only
 ```
 
 Each source writes a manifest with timing, count, and errors — `cat data/raw/*.manifest.json` shows source health without re-running. Sources degrade gracefully on robots.txt block or HTTP errors (manifest captures the error, run continues).

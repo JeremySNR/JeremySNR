@@ -14,7 +14,9 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT))
 
+from app.market_tab import render_market_tab  # noqa: E402
 from gibson_price.models.predict import PredictionRequest, predict_price  # noqa: E402
 from gibson_price.schema import (  # noqa: E402
     GIBSON_MODELS,
@@ -22,6 +24,8 @@ from gibson_price.schema import (  # noqa: E402
     GUILD_MODELS,
     MARTIN_MODELS,
 )
+
+SEED_PATH = ROOT / "data" / "seed" / "gibson_acoustic_seed.csv"
 
 MODELS_BY_BRAND = {
     "Gibson": sorted(GIBSON_MODELS),
@@ -34,123 +38,130 @@ st.set_page_config(page_title="Vintage Acoustic Pricing", page_icon="🎸", layo
 
 st.title("🎸 Vintage Acoustic Pricing — Gibson-focused")
 st.caption(
-    "Hedonic gradient-boosting model with conformalized 80% prediction intervals and "
-    "SHAP-based explanations. Trained on a Vintage Guitar Price Guide / Heritage Auctions "
-    "calibration set, weighted toward vintage Gibson acoustics."
+    "Hedonic gradient-boosting model with conformalized 80% prediction intervals, "
+    "SHAP-based explanations, and a market index + forecast. Trained on a Vintage "
+    "Guitar Price Guide / Heritage Auctions calibration set, weighted toward "
+    "vintage Gibson acoustics."
 )
 
-col_input, col_output = st.columns([1, 1.4])
+tab_predict, tab_market = st.tabs(["🎯 Single-instrument price", "📈 Market index & forecast"])
 
-with col_input:
-    st.subheader("Specify the guitar")
-    brand = st.selectbox("Brand", list(MODELS_BY_BRAND.keys()), index=0)
-    model_family = st.selectbox("Model", MODELS_BY_BRAND[brand], index=0)
-    year = st.slider("Year", min_value=1928, max_value=2024, value=1955)
-    condition = st.select_slider(
-        "Condition",
-        options=[("Poor", 1), ("Fair", 2), ("Good", 3), ("Very Good", 4),
-                 ("Very Good+", 5), ("Excellent", 6), ("Mint", 7)],
-        value=("Excellent", 6),
-        format_func=lambda x: x[0],
-    )
+with tab_market:
+    render_market_tab(SEED_PATH)
 
-    st.markdown("**Originality** (each toggle subtracts value)")
-    refinished = st.checkbox("Refinished / oversprayed")
-    headstock_repaired = st.checkbox("Headstock break repaired")
-    neck_reset = st.checkbox("Neck reset")
-    refret = st.checkbox("Refretted")
-    replaced_tuners = st.checkbox("Replaced tuners")
-    replaced_bridge = st.checkbox("Replaced bridge")
-    top_crack = st.checkbox("Top crack (repaired)")
+with tab_predict:
+    col_input, col_output = st.columns([1, 1.4])
 
-    with st.expander("🔧 Structural alterations — for the weird ones"):
-        st.caption(
-            "Compound modifications that change the instrument's identity — e.g. "
-            "a 1942 J-45 with a 1968 replacement top is a different beast than either a "
-            "clean 1942 or a refinished one."
+    with col_input:
+        st.subheader("Specify the guitar")
+        brand = st.selectbox("Brand", list(MODELS_BY_BRAND.keys()), index=0)
+        model_family = st.selectbox("Model", MODELS_BY_BRAND[brand], index=0)
+        year = st.slider("Year", min_value=1928, max_value=2024, value=1955)
+        condition = st.select_slider(
+            "Condition",
+            options=[("Poor", 1), ("Fair", 2), ("Good", 3), ("Very Good", 4),
+                     ("Very Good+", 5), ("Excellent", 6), ("Mint", 7)],
+            value=("Excellent", 6),
+            format_func=lambda x: x[0],
         )
-        top_replaced = st.checkbox("Top replaced (re-topped)")
-        top_replacement_year = None
-        if top_replaced:
-            top_replacement_year = st.number_input(
-                "Year the top was replaced",
-                min_value=1930, max_value=2026, value=max(year + 10, 1960),
-                help="Era of the replacement matters: a period-correct replacement "
-                     "is less of a hit than a modern repro.",
+
+        st.markdown("**Originality** (each toggle subtracts value)")
+        refinished = st.checkbox("Refinished / oversprayed")
+        headstock_repaired = st.checkbox("Headstock break repaired")
+        neck_reset = st.checkbox("Neck reset")
+        refret = st.checkbox("Refretted")
+        replaced_tuners = st.checkbox("Replaced tuners")
+        replaced_bridge = st.checkbox("Replaced bridge")
+        top_crack = st.checkbox("Top crack (repaired)")
+
+        with st.expander("🔧 Structural alterations — for the weird ones"):
+            st.caption(
+                "Compound modifications that change the instrument's identity — e.g. "
+                "a 1942 J-45 with a 1968 replacement top is a different beast than either "
+                "a clean 1942 or a refinished one."
             )
-        back_sides_replaced = st.checkbox("Back and/or sides replaced")
-        neck_replaced = st.checkbox("Neck replaced (full swap, not just reset)")
-        rebraced = st.checkbox("Re-braced (bracing scheme rebuilt)")
-        body_repaired_major = st.checkbox("Major body work (binding fully redone, etc.)")
-        electrified_aftermarket = st.checkbox("Pickup / preamp installed aftermarket")
-        converted_cutaway = st.checkbox("Body converted to a cutaway")
-        frankenguitar = st.checkbox("Parts assembled from multiple instruments (frankenguitar)")
+            top_replaced = st.checkbox("Top replaced (re-topped)")
+            top_replacement_year = None
+            if top_replaced:
+                top_replacement_year = st.number_input(
+                    "Year the top was replaced",
+                    min_value=1930, max_value=2026, value=max(year + 10, 1960),
+                    help="Era of the replacement matters: a period-correct replacement "
+                         "is less of a hit than a modern repro.",
+                )
+            back_sides_replaced = st.checkbox("Back and/or sides replaced")
+            neck_replaced = st.checkbox("Neck replaced (full swap, not just reset)")
+            rebraced = st.checkbox("Re-braced (bracing scheme rebuilt)")
+            body_repaired_major = st.checkbox("Major body work (binding fully redone, etc.)")
+            electrified_aftermarket = st.checkbox("Pickup / preamp installed aftermarket")
+            converted_cutaway = st.checkbox("Body converted to a cutaway")
+            frankenguitar = st.checkbox("Parts assembled from multiple instruments (frankenguitar)")
 
-    st.markdown("**Provenance** (each toggle adds value)")
-    has_original_case = st.checkbox("Original case")
-    has_original_receipt = st.checkbox("Original receipt / hang tag")
-    prior_famous_owner = st.checkbox("Famous prior owner")
+        st.markdown("**Provenance** (each toggle adds value)")
+        has_original_case = st.checkbox("Original case")
+        has_original_receipt = st.checkbox("Original receipt / hang tag")
+        prior_famous_owner = st.checkbox("Famous prior owner")
 
-    if st.button("Estimate value", type="primary", use_container_width=True):
-        st.session_state["last_request"] = PredictionRequest(
-            brand=brand,
-            model_family=model_family,
-            year=year,
-            condition_grade=condition[1],
-            refinished=refinished,
-            headstock_repaired=headstock_repaired,
-            neck_reset=neck_reset,
-            refret=refret,
-            replaced_tuners=replaced_tuners,
-            replaced_bridge=replaced_bridge,
-            top_crack=top_crack,
-            top_replaced=top_replaced,
-            top_replacement_year=int(top_replacement_year) if top_replacement_year else None,
-            back_sides_replaced=back_sides_replaced,
-            neck_replaced=neck_replaced,
-            rebraced=rebraced,
-            body_repaired_major=body_repaired_major,
-            electrified_aftermarket=electrified_aftermarket,
-            converted_cutaway=converted_cutaway,
-            frankenguitar=frankenguitar,
-            has_original_case=has_original_case,
-            has_original_receipt=has_original_receipt,
-            prior_famous_owner=prior_famous_owner,
-        )
-
-with col_output:
-    req = st.session_state.get("last_request")
-    if req is None:
-        st.info("Specify a guitar on the left and click **Estimate value**.")
-    else:
-        with st.spinner("Predicting..."):
-            pred = predict_price(req)
-
-        st.subheader(f"Estimated value: **${pred.median_usd:,.0f}**")
-        st.caption(
-            f"80% prediction interval: ${pred.interval_low_usd:,.0f} — "
-            f"${pred.interval_high_usd:,.0f}  •  confidence: {pred.confidence_label}  •  "
-            f"method: `{pred.method}`"
-        )
-        st.write(pred.natural_language_summary)
-
-        if pred.top_contributors:
-            st.markdown("**Top price drivers (SHAP)**")
-            shap_df = pd.DataFrame([
-                {"feature": c.feature, "value": c.value, "contribution_usd": c.contribution_usd}
-                for c in pred.top_contributors
-            ])
-            st.dataframe(shap_df, use_container_width=True, hide_index=True)
-
-        if pred.nearest_comps:
-            st.markdown("**Comparable comps from seed dataset**")
-            comps_df = pd.DataFrame(pred.nearest_comps)
-            st.dataframe(comps_df, use_container_width=True, hide_index=True)
-
-        with st.expander("⚠️ Disclaimer"):
-            st.write(
-                "This is a portfolio demonstration, not a professional appraisal. "
-                "Do not use this output for insurance valuation, sale negotiation, or "
-                "any consequential financial decision. Vintage guitar valuation requires "
-                "physical inspection by a qualified appraiser."
+        if st.button("Estimate value", type="primary", use_container_width=True):
+            st.session_state["last_request"] = PredictionRequest(
+                brand=brand,
+                model_family=model_family,
+                year=year,
+                condition_grade=condition[1],
+                refinished=refinished,
+                headstock_repaired=headstock_repaired,
+                neck_reset=neck_reset,
+                refret=refret,
+                replaced_tuners=replaced_tuners,
+                replaced_bridge=replaced_bridge,
+                top_crack=top_crack,
+                top_replaced=top_replaced,
+                top_replacement_year=int(top_replacement_year) if top_replacement_year else None,
+                back_sides_replaced=back_sides_replaced,
+                neck_replaced=neck_replaced,
+                rebraced=rebraced,
+                body_repaired_major=body_repaired_major,
+                electrified_aftermarket=electrified_aftermarket,
+                converted_cutaway=converted_cutaway,
+                frankenguitar=frankenguitar,
+                has_original_case=has_original_case,
+                has_original_receipt=has_original_receipt,
+                prior_famous_owner=prior_famous_owner,
             )
+
+    with col_output:
+        req = st.session_state.get("last_request")
+        if req is None:
+            st.info("Specify a guitar on the left and click **Estimate value**.")
+        else:
+            with st.spinner("Predicting..."):
+                pred = predict_price(req)
+
+            st.subheader(f"Estimated value: **${pred.median_usd:,.0f}**")
+            st.caption(
+                f"80% prediction interval: ${pred.interval_low_usd:,.0f} — "
+                f"${pred.interval_high_usd:,.0f}  •  confidence: {pred.confidence_label}  •  "
+                f"method: `{pred.method}`"
+            )
+            st.write(pred.natural_language_summary)
+
+            if pred.top_contributors:
+                st.markdown("**Top price drivers (SHAP)**")
+                shap_df = pd.DataFrame([
+                    {"feature": c.feature, "value": c.value, "contribution_usd": c.contribution_usd}
+                    for c in pred.top_contributors
+                ])
+                st.dataframe(shap_df, use_container_width=True, hide_index=True)
+
+            if pred.nearest_comps:
+                st.markdown("**Comparable comps from seed dataset**")
+                comps_df = pd.DataFrame(pred.nearest_comps)
+                st.dataframe(comps_df, use_container_width=True, hide_index=True)
+
+            with st.expander("⚠️ Disclaimer"):
+                st.write(
+                    "This is a portfolio demonstration, not a professional appraisal. "
+                    "Do not use this output for insurance valuation, sale negotiation, or "
+                    "any consequential financial decision. Vintage guitar valuation requires "
+                    "physical inspection by a qualified appraiser."
+                )

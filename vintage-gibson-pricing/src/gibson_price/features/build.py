@@ -188,7 +188,8 @@ def _listing_to_row(listing: GuitarListing, sold_year_default: int) -> dict[str,
 
     condition = listing.condition_grade or ConditionGrade.VERY_GOOD
     bracing_pattern, scalloped = bracing_pattern_for(listing.brand, listing.model_family, year)
-    sold_year = (listing.sold_date or listing.listing_date or date(sold_year_default, 1, 1)).year
+    full_sold_date = listing.sold_date or listing.listing_date or date(sold_year_default, 1, 1)
+    sold_year = full_sold_date.year
 
     row = {
         "brand": listing.brand,
@@ -234,6 +235,8 @@ def _listing_to_row(listing: GuitarListing, sold_year_default: int) -> dict[str,
         "source": listing.source,
         "sold_year": sold_year,
         "price_usd": float(listing.price_usd),
+        # Metadata for downstream time-series use; not a model feature.
+        "sold_date": full_sold_date.isoformat(),
     }
     return row
 
@@ -255,4 +258,7 @@ def build_feature_frame(
     if df.empty:
         return df
     ordered = [*ALL_FEATURES, "price_usd"]
+    # `sold_date` is metadata for the time-series layer; pass it through when present.
+    if "sold_date" in df.columns:
+        ordered.append("sold_date")
     return df[ordered]

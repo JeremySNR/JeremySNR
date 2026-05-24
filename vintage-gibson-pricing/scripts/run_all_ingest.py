@@ -28,8 +28,12 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from gibson_price.ingest import dealer_archive, heritage_scraper  # noqa: E402
-from gibson_price.ingest.dealers import shopify  # noqa: E402
-from gibson_price.ingest.dealers.registry import DealerConfig, enabled_dealers  # noqa: E402
+from gibson_price.ingest.dealers import generic, shopify  # noqa: E402
+from gibson_price.ingest.dealers.registry import (  # noqa: E402
+    DealerConfig,
+    dealers_with_cc,
+    enabled_dealers,
+)
 from gibson_price.schema import GuitarListing  # noqa: E402
 
 log = logging.getLogger(__name__)
@@ -55,6 +59,13 @@ def _fetch_dealer(dealer: DealerConfig) -> list[GuitarListing]:
             dealer_name=dealer.name,
             brand_filter=dealer.brand_focus,
         )
+    if dealer.platform == "generic":
+        return generic.fetch_via_sitemap_jsonld(
+            dealer.url,
+            dealer_name=dealer.name,
+            product_path=dealer.product_path,
+            brand_filter=dealer.brand_focus,
+        )
     if dealer.platform == "custom":
         if not dealer.fetcher:
             raise ValueError(f"Custom dealer {dealer.name} missing `fetcher`")
@@ -62,6 +73,28 @@ def _fetch_dealer(dealer: DealerConfig) -> list[GuitarListing]:
         module = importlib.import_module(module_path)
         return getattr(module, attr)()
     raise ValueError(f"Unknown platform {dealer.platform}")
+
+
+def _common_crawl_backfill() -> list[GuitarListing]:
+    """Historical archive pull across every dealer that has a CC domain. This
+    gives us years of historical product-page snapshots without ever touching
+    the live dealer sites — the highest-leverage single source for both
+    breadth (more guitars) and depth (price-over-time history)."""
+    out: list[GuitarListing] = []
+    for dealer in dealers_with_cc():
+        if not dealer.common_crawl_domain:
+            continue
+        try:
+            records = generic.fetch_via_common_crawl(
+                dealer_name=dealer.name,
+                domain=dealer.common_crawl_domain,
+                brand_filter=dealer.brand_focus,
+            )
+            log.info("  CC %s: %d records", dealer.name, len(records))
+            out.extend(records)
+        except Exception as e:
+            log.warning("CC backfill for %s failed: %s", dealer.name, e)
+    return out
 
 
 def _write_jsonl(listings: list[GuitarListing], path: Path) -> None:
@@ -102,6 +135,12 @@ def main() -> None:
     parser.add_argument("--only", help="Comma-separated source names to run")
     parser.add_argument("--skip-wayback", action="store_true")
     parser.add_argument("--skip-heritage", action="store_true")
+    parser.add_argument("--skip-common-crawl", action="store_true")
+    parser.add_argument(
+        "--common-crawl-only",
+        action="store_true",
+        help="Skip live dealer hits; only run Common Crawl historical backfill.",
+    )
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -109,25 +148,30 @@ def main() -> None:
     only = set(args.only.split(",")) if args.only else None
     manifests: list[SourceManifest] = []
 
-    for dealer in enabled_dealers():
-        if only and dealer.name not in only:
-            continue
-        log.info("=== %s (%s) ===", dealer.name, dealer.platform)
-        manifests.append(_run_source(dealer.name, lambda d=dealer: _fetch_dealer(d)))
+    if not args.common_crawl_only:
+        for dealer in enabled_dealers():
+            if only and dealer.name not in only:
+                continue
+            log.info("=== %s (%s) ===", dealer.name, dealer.platform)
+            manifests.append(_run_source(dealer.name, lambda d=dealer: _fetch_dealer(d)))
 
-    if not args.skip_heritage and (only is None or "heritage" in only):
-        log.info("=== heritage ===")
-        manifests.append(_run_source(
-            "heritage",
-            lambda: (
-                heritage_scraper.search_realized(brand="Gibson", max_pages=5)
-                + heritage_scraper.search_realized(brand="Martin", max_pages=3)
-            ),
-        ))
+        if not args.skip_heritage and (only is None or "heritage" in only):
+            log.info("=== heritage ===")
+            manifests.append(_run_source(
+                "heritage",
+                lambda: (
+                    heritage_scraper.search_realized(brand="Gibson", max_pages=5)
+                    + heritage_scraper.search_realized(brand="Martin", max_pages=3)
+                ),
+            ))
 
-    if not args.skip_wayback and (only is None or "wayback" in only):
-        log.info("=== wayback diff (sold inference) ===")
-        manifests.append(_run_source("wayback", dealer_archive.ingest_all))
+        if not args.skip_wayback and (only is None or "wayback" in only):
+            log.info("=== wayback diff (sold inference) ===")
+            manifests.append(_run_source("wayback", dealer_archive.ingest_all))
+
+    if not args.skip_common_crawl and (only is None or "common_crawl" in only or args.common_crawl_only):
+        log.info("=== common crawl (historical backfill across all dealers) ===")
+        manifests.append(_run_source("common_crawl", _common_crawl_backfill))
 
     log.info("\n=== Summary ===")
     for m in manifests:

@@ -18,6 +18,7 @@ dependencies = [
     "requests>=2.31",
     "requests-cache>=1.2",
     "beautifulsoup4>=4.12",
+    "lxml>=5.0",
     "rapidfuzz>=3.6",
 ]
 
