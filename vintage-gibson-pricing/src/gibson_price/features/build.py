@@ -169,6 +169,23 @@ def _listing_to_row(listing: GuitarListing, sold_year_default: int) -> dict[str,
     has_original_case = listing.has_original_case or parsed.has_original_case
     has_original_receipt = listing.has_original_receipt or parsed.has_original_receipt
 
+    # Structural alterations
+    top_replaced = listing.top_replaced or parsed.top_replaced
+    back_sides_replaced = listing.back_sides_replaced or parsed.back_sides_replaced
+    neck_replaced = listing.neck_replaced or parsed.neck_replaced
+    rebraced = listing.rebraced or parsed.rebraced
+    body_repaired_major = listing.body_repaired_major or parsed.body_repaired_major
+    electrified_aftermarket = listing.electrified_aftermarket or parsed.electrified_aftermarket
+    converted_cutaway = listing.converted_cutaway or parsed.converted_cutaway
+    frankenguitar = listing.frankenguitar or parsed.frankenguitar
+
+    top_replacement_year = listing.top_replacement_year or (
+        parsed.replacement_year_hint if top_replaced else None
+    )
+    top_replacement_era_distance = (
+        abs(top_replacement_year - year) if (top_replaced and top_replacement_year) else 0
+    )
+
     condition = listing.condition_grade or ConditionGrade.VERY_GOOD
     bracing_pattern, scalloped = bracing_pattern_for(listing.brand, listing.model_family, year)
     sold_year = (listing.sold_date or listing.listing_date or date(sold_year_default, 1, 1)).year
@@ -201,6 +218,15 @@ def _listing_to_row(listing: GuitarListing, sold_year_default: int) -> dict[str,
         "replaced_bridge": int(replaced_bridge),
         "replaced_pickup": int(replaced_pickup),
         "replaced_pickguard": int(replaced_pickguard),
+        "top_replaced": int(top_replaced),
+        "top_replacement_era_distance": int(top_replacement_era_distance),
+        "back_sides_replaced": int(back_sides_replaced),
+        "neck_replaced": int(neck_replaced),
+        "rebraced": int(rebraced),
+        "body_repaired_major": int(body_repaired_major),
+        "electrified_aftermarket": int(electrified_aftermarket),
+        "converted_cutaway": int(converted_cutaway),
+        "frankenguitar": int(frankenguitar),
         "has_original_case": int(has_original_case),
         "has_original_receipt": int(has_original_receipt),
         "has_pre_war_certification": int(listing.has_pre_war_certification),

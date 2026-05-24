@@ -20,10 +20,31 @@ deductions:
   side_crack: 0.92                  # repaired side crack
   binding_shrinkage: 0.97           # cosmetic
 
+# Structural alterations — these change the instrument's identity. Much heavier
+# than refin/replaced-part. Compounding is multiplicative (cap at 0.20 floor).
+structural_deductions:
+  top_replaced: 0.50                # retopped: loses tonewood era, much of the value
+  back_sides_replaced: 0.45         # rosewood-back guitars especially: huge hit
+  neck_replaced: 0.40               # full neck swap — most identity-defining part
+  rebraced: 0.70                    # changes voicing; scallop-conversion typical
+  body_repaired_major: 0.80         # extensive body work, binding fully redone
+  electrified_aftermarket: 0.90     # mild on most; bigger on collector-grade
+  converted_cutaway: 0.65           # body modified — not the original shape
+  frankenguitar: 0.35               # parts from multiple instruments
+
+# Extra penalty if replacement era is far from original
+# (e.g., 1942 top with 1968 top = 26 years apart -> additional penalty)
+top_replacement_era_distance_penalty:
+  per_decade: 0.05                  # 5% extra deduction per decade of era-mismatch
+  max_penalty: 0.20                 # capped at 20% additional
+
 premiums:
   has_original_case: 1.03
   has_original_receipt: 1.05
   has_pre_war_certification: 1.10
   prior_famous_owner: 1.50          # provenance can multiply value; capped at 1.5x for synthetic
+
+# Floor on total deduction — even a frankenguitar isn't worth $0
+deduction_floor: 0.20
 
 variants_per_row: 3

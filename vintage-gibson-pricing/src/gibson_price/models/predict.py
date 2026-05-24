@@ -66,6 +66,19 @@ class PredictionRequest:
     side_crack: bool = False
     binding_shrinkage: bool = False
 
+    # Structural alterations — compound modifications that change the instrument's identity.
+    # Example: a 1942 J-45 with a top replaced in 1968 has top_replaced=True, top_replacement_year=1968.
+    top_replaced: bool = False
+    top_replacement_year: int | None = None
+    back_sides_replaced: bool = False
+    back_sides_replacement_year: int | None = None
+    neck_replaced: bool = False
+    rebraced: bool = False
+    body_repaired_major: bool = False
+    electrified_aftermarket: bool = False
+    converted_cutaway: bool = False
+    frankenguitar: bool = False
+
     # Provenance
     has_original_case: bool = False
     has_original_receipt: bool = False
@@ -83,6 +96,9 @@ class PredictionRequest:
 
 def _to_feature_row(req: PredictionRequest) -> pd.DataFrame:
     bracing, scalloped = bracing_pattern_for(req.brand, req.model_family, req.year)
+    top_replacement_era_distance = (
+        abs(req.top_replacement_year - req.year) if (req.top_replaced and req.top_replacement_year) else 0
+    )
     row = {
         "brand": req.brand,
         "model_family": req.model_family,
@@ -111,6 +127,15 @@ def _to_feature_row(req: PredictionRequest) -> pd.DataFrame:
         "replaced_bridge": int(req.replaced_bridge),
         "replaced_pickup": int(req.replaced_pickup),
         "replaced_pickguard": int(req.replaced_pickguard),
+        "top_replaced": int(req.top_replaced),
+        "top_replacement_era_distance": top_replacement_era_distance,
+        "back_sides_replaced": int(req.back_sides_replaced),
+        "neck_replaced": int(req.neck_replaced),
+        "rebraced": int(req.rebraced),
+        "body_repaired_major": int(req.body_repaired_major),
+        "electrified_aftermarket": int(req.electrified_aftermarket),
+        "converted_cutaway": int(req.converted_cutaway),
+        "frankenguitar": int(req.frankenguitar),
         "has_original_case": int(req.has_original_case),
         "has_original_receipt": int(req.has_original_receipt),
         "has_pre_war_certification": int(req.has_pre_war_certification),

@@ -27,6 +27,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 RANGES_YAML = ROOT / "data" / "seed" / "price_ranges.yaml"
+AUG_YAML = ROOT / "data" / "seed" / "synthetic_augmentation_rules.yaml"
 SEED_CSV = ROOT / "data" / "seed" / "gibson_acoustic_seed.csv"
 
 random.seed(42)
@@ -97,6 +98,16 @@ def expand_rows(spec: dict) -> list[dict]:
             "replaced_bridge": int(replaced_bridge),
             "replaced_pickup": 0,
             "replaced_pickguard": 0,
+            "top_replaced": 0,
+            "top_replacement_year": "",
+            "back_sides_replaced": 0,
+            "back_sides_replacement_year": "",
+            "neck_replaced": 0,
+            "rebraced": 0,
+            "body_repaired_major": 0,
+            "electrified_aftermarket": 0,
+            "converted_cutaway": 0,
+            "frankenguitar": 0,
             "has_original_case": int(has_case),
             "has_original_receipt": int(random.random() < 0.08),
             "has_pre_war_certification": int(brand == "Gibson" and year < 1942 and random.random() < 0.35),
@@ -109,13 +120,67 @@ def expand_rows(spec: dict) -> list[dict]:
     return rows
 
 
+# Compound structural-modification variants the regular expand_rows won't produce.
+# Sampled across the strongest priors so the model has training examples — the user's
+# question ("what if a 40s guitar was retopped in the 60s") is the canonical case here.
+STRUCTURAL_SCENARIOS = [
+    # (label, alteration_flags_to_set, replacement_year_offset_or_None, multiplier)
+    ("retop_modern_repro", {"top_replaced": 1}, +30, 0.50),
+    ("retop_period_correct", {"top_replaced": 1}, +5, 0.65),       # within a decade, less damage
+    ("retop_modern_generic", {"top_replaced": 1}, +50, 0.40),
+    ("neck_replaced", {"neck_replaced": 1}, None, 0.40),
+    ("rebraced_to_non_scalloped", {"rebraced": 1}, None, 0.65),
+    ("body_repaired_major", {"body_repaired_major": 1}, None, 0.78),
+    ("electrified", {"electrified_aftermarket": 1}, None, 0.92),
+    ("cutaway_conversion", {"converted_cutaway": 1}, None, 0.62),
+    ("frankenguitar", {"frankenguitar": 1, "neck_replaced": 1, "refinished": 1}, None, 0.30),
+    ("retop_and_refin", {"top_replaced": 1, "refinished": 1}, +20, 0.32),
+    ("back_sides_replaced", {"back_sides_replaced": 1}, None, 0.43),
+]
+
+
+def generate_structural_variants(base_rows: list[dict], per_row: float = 0.05) -> list[dict]:
+    """For a random sample of base rows, generate structural-mod variants.
+
+    `per_row` = expected number of variants per base row (Poisson rate). Defaults
+    to ~5%, so a 684-row base yields ~30-40 structural variants spread across
+    the scenario library.
+    """
+    variants = []
+    for base in base_rows:
+        if random.random() > per_row:
+            continue
+        scenario = random.choice(STRUCTURAL_SCENARIOS)
+        label, flags, year_offset, multiplier = scenario
+
+        base_year = int(base["year"])
+        variant = dict(base)
+        variant["source_listing_id"] = f"{base['source_listing_id']}-{label}"
+        variant["price_usd"] = max(round(base["price_usd"] * multiplier, -1), 500)
+        variant["description"] = f"{base.get('description', '')} [synthetic {label}]"
+        # Apply the structural flags
+        for flag, val in flags.items():
+            variant[flag] = val
+        if "top_replaced" in flags and year_offset is not None:
+            variant["top_replacement_year"] = base_year + year_offset
+        variants.append(variant)
+    return variants
+
+
 def main() -> None:
     with open(RANGES_YAML) as f:
         specs = yaml.safe_load(f)
+    # AUG_YAML is loaded by the model's synthetic augmentation pass; not used here.
+    _ = AUG_YAML
 
     all_rows = []
     for spec in specs:
         all_rows.extend(expand_rows(spec))
+
+    # Add structural-mod variants on top of the base rows. These teach the model
+    # to handle the "what if a 40s guitar was retopped in the 60s" case.
+    structural = generate_structural_variants(all_rows, per_row=0.10)
+    all_rows.extend(structural)
 
     SEED_CSV.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = list(all_rows[0].keys())
@@ -124,7 +189,7 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(all_rows)
 
-    print(f"Wrote {len(all_rows)} rows to {SEED_CSV}")
+    print(f"Wrote {len(all_rows)} rows to {SEED_CSV}  ({len(structural)} structural-mod variants)")
 
 
 if __name__ == "__main__":

@@ -63,6 +63,29 @@ with col_input:
     replaced_bridge = st.checkbox("Replaced bridge")
     top_crack = st.checkbox("Top crack (repaired)")
 
+    with st.expander("🔧 Structural alterations — for the weird ones"):
+        st.caption(
+            "Compound modifications that change the instrument's identity — e.g. "
+            "a 1942 J-45 with a 1968 replacement top is a different beast than either a "
+            "clean 1942 or a refinished one."
+        )
+        top_replaced = st.checkbox("Top replaced (re-topped)")
+        top_replacement_year = None
+        if top_replaced:
+            top_replacement_year = st.number_input(
+                "Year the top was replaced",
+                min_value=1930, max_value=2026, value=max(year + 10, 1960),
+                help="Era of the replacement matters: a period-correct replacement "
+                     "is less of a hit than a modern repro.",
+            )
+        back_sides_replaced = st.checkbox("Back and/or sides replaced")
+        neck_replaced = st.checkbox("Neck replaced (full swap, not just reset)")
+        rebraced = st.checkbox("Re-braced (bracing scheme rebuilt)")
+        body_repaired_major = st.checkbox("Major body work (binding fully redone, etc.)")
+        electrified_aftermarket = st.checkbox("Pickup / preamp installed aftermarket")
+        converted_cutaway = st.checkbox("Body converted to a cutaway")
+        frankenguitar = st.checkbox("Parts assembled from multiple instruments (frankenguitar)")
+
     st.markdown("**Provenance** (each toggle adds value)")
     has_original_case = st.checkbox("Original case")
     has_original_receipt = st.checkbox("Original receipt / hang tag")
@@ -81,6 +104,15 @@ with col_input:
             replaced_tuners=replaced_tuners,
             replaced_bridge=replaced_bridge,
             top_crack=top_crack,
+            top_replaced=top_replaced,
+            top_replacement_year=int(top_replacement_year) if top_replacement_year else None,
+            back_sides_replaced=back_sides_replaced,
+            neck_replaced=neck_replaced,
+            rebraced=rebraced,
+            body_repaired_major=body_repaired_major,
+            electrified_aftermarket=electrified_aftermarket,
+            converted_cutaway=converted_cutaway,
+            frankenguitar=frankenguitar,
             has_original_case=has_original_case,
             has_original_receipt=has_original_receipt,
             prior_famous_owner=prior_famous_owner,

@@ -74,14 +74,18 @@ def parse_title(title: str) -> TitleParse:
     plausible = [y for y in years if 1920 <= y <= 2030]
     year = plausible[0] if plausible else None
 
-    # Model family — try the candidate set for the inferred brand first
-    candidates = list(ALL_MODELS_BY_BRAND.get(brand, set())) if brand else ALL_MODELS_FLAT
+    # Model family — try the candidate set for the inferred brand first.
+    # Sort by length descending so longer, more specific names ("SJ-200") win
+    # over their substrings ("J-200"). Python set iteration is otherwise
+    # non-deterministic.
+    raw_candidates = list(ALL_MODELS_BY_BRAND.get(brand, set())) if brand else ALL_MODELS_FLAT
+    candidates = sorted(raw_candidates, key=lambda c: -len(_normalize_for_fuzzy(c)))
     norm_title = _normalize_for_fuzzy(title)
     best_model: str | None = None
     best_score = 0.0
     for cand in candidates:
         norm_cand = _normalize_for_fuzzy(cand)
-        # Substring match wins outright
+        # Substring match wins outright (longest candidate first thanks to the sort)
         if norm_cand in norm_title:
             best_model = cand
             best_score = 1.0

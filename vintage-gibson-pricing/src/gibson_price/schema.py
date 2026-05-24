@@ -96,6 +96,20 @@ class GuitarListing(BaseModel):
     replaced_pickup: bool = False
     replaced_pickguard: bool = False
 
+    # Structural alterations — the "what if a 40s guitar was retopped in the 60s" cases.
+    # These are much heavier deductions than a refinish or replaced tuners; the model
+    # learns interactions (e.g. a retopped golden-era guitar loses the tonewood premium).
+    top_replaced: bool = False
+    top_replacement_year: int | None = None
+    back_sides_replaced: bool = False
+    back_sides_replacement_year: int | None = None
+    neck_replaced: bool = False           # full neck swap (distinct from neck_reset)
+    rebraced: bool = False                # bracing scheme rebuilt / replaced
+    body_repaired_major: bool = False     # extensive body work (binding fully redone, etc.)
+    electrified_aftermarket: bool = False # pickup/preamp installed after factory
+    converted_cutaway: bool = False       # body modified to add a cutaway
+    frankenguitar: bool = False           # parts assembled from multiple instruments
+
     # Provenance
     has_original_case: bool = False
     has_original_receipt: bool = False
@@ -157,6 +171,17 @@ class FeatureRow(BaseModel):
     replaced_bridge: int
     replaced_pickup: int
     replaced_pickguard: int
+
+    # Structural alterations
+    top_replaced: int
+    top_replacement_era_distance: int     # |orig_year - replacement_year| in years; 0 if not replaced
+    back_sides_replaced: int
+    neck_replaced: int
+    rebraced: int
+    body_repaired_major: int
+    electrified_aftermarket: int
+    converted_cutaway: int
+    frankenguitar: int
 
     # Provenance
     has_original_case: int
@@ -221,6 +246,15 @@ NUMERIC_FEATURES: tuple[str, ...] = (
     "replaced_bridge",
     "replaced_pickup",
     "replaced_pickguard",
+    "top_replaced",
+    "top_replacement_era_distance",
+    "back_sides_replaced",
+    "neck_replaced",
+    "rebraced",
+    "body_repaired_major",
+    "electrified_aftermarket",
+    "converted_cutaway",
+    "frankenguitar",
     "has_original_case",
     "has_original_receipt",
     "has_pre_war_certification",
