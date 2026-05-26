@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Animated context instrument header</title>
+  <desc id="desc">An abstract GitHub profile banner showing messy context fragments compressed into a clean adapter-ready signal.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="48%" stop-color="#09101c"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#2dd48e" stop-opacity=".22"/>
+      <stop offset="54%" stop-color="#58a6ff" stop-opacity=".10"/>
+      <stop offset="100%" stop-color="#05080f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="instrumentGlow" cx="50%" cy="50%" r="58%">
+      <stop offset="0%" stop-color="#2dd48e" stop-opacity=".26"/>
+      <stop offset="100%" stop-color="#05080f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <style>
+      .stroke-round { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .panel { fill: #0c111d; }
+      .panel-2 { fill: #121928; }
+      .muted { fill: #44526c; }
+      .green { fill: #2dd48e; }
+      .blue { fill: #58a6ff; }
+      .amber { fill: #ffc457; }
+      .white-stroke { stroke: #e6edf9; opacity: .48; }
+
+      @keyframes breathe { 0%,100% { opacity:.72; transform:scale(.98); } 50% { opacity:1; transform:scale(1.04); } }
+      @keyframes memory { 0%,100% { opacity:.14; } 45% { opacity:.52; } }
+      @keyframes ring { to { stroke-dashoffset:-320; } }
+      @keyframes scan { 0%,100% { opacity:0; transform:translateX(0); } 12%,70% { opacity:.9; } 36%,76% { transform:translateX(210px); } }
+      @keyframes budget { 0%,100% { opacity:.26; transform:scaleX(.58); } 38% { opacity:1; transform:scaleX(1); } 72% { opacity:.62; transform:scaleX(.84); } }
+      @keyframes pulse { 0%,100% { opacity:0; offset-distance:0%; } 16% { opacity:1; } 72% { opacity:.8; } 88% { opacity:0; offset-distance:100%; } }
+      @keyframes selected-a { 0%,100% { opacity:.34; transform:translate(0,0); } 20% { opacity:.86; } 48%,68% { opacity:.18; transform:translate(268px,28px); } }
+      @keyframes selected-b { 0%,100% { opacity:.32; transform:translate(0,0); } 26% { opacity:.84; } 52%,70% { opacity:.16; transform:translate(198px,0); } }
+      @keyframes selected-c { 0%,100% { opacity:.30; transform:translate(0,0); } 28% { opacity:.78; } 54%,70% { opacity:.14; transform:translate(106px,52px); } }
+      @keyframes rejected { 0%,100% { opacity:.25; transform:translate(0,0); } 32% { opacity:.40; } 58%,72% { opacity:.08; transform:translate(120px,28px); } }
+      @keyframes irisTop { 0%,100% { transform:translateY(0); } 38%,64% { transform:translateY(6px); } }
+      @keyframes irisBottom { 0%,100% { transform:translateY(0); } 38%,64% { transform:translateY(-6px); } }
+      @keyframes coreLights { 0%,100% { opacity:.24; } 50% { opacity:.80; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <ellipse cx="610" cy="150" rx="310" ry="115" fill="url(#halo)" filter="url(#softBlur)" style="transform-origin:610px 150px; animation:breathe 4s ease-in-out infinite"/>
+
+  <g opacity=".34">
+    <rect x="790" y="84" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="844" y="84" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="925" y="84" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="1006" y="84" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="817" y="111" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="898" y="111" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="979" y="111" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="1060" y="111" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="790" y="138" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="871" y="138" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="952" y="138" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="1033" y="138" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="844" y="165" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="925" y="165" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="1006" y="165" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="817" y="192" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="898" y="192" width="12" height="12" rx="3" fill="#1a2538"/>
+    <rect x="979" y="192" width="12" height="12" rx="3" fill="#1a2538"/>
+  </g>
+  <g class="green" style="animation:memory 4s ease-in-out infinite">
+    <rect x="817" y="84" width="12" height="12" rx="3"/>
+    <rect x="925" y="111" width="12" height="12" rx="3"/>
+    <rect x="1033" y="84" width="12" height="12" rx="3"/>
+    <rect x="790" y="165" width="12" height="12" rx="3"/>
+    <rect x="952" y="192" width="12" height="12" rx="3"/>
+    <rect x="1087" y="165" width="12" height="12" rx="3"/>
+  </g>
+
+  <path d="M130 150 C210 150 290 150 380 150" class="stroke-round" stroke="#44526c" stroke-width="1.2" opacity=".28"/>
+
+  <g style="animation:selected-a 4s cubic-bezier(.42,0,.58,1) infinite">
+    <rect x="94" y="93" width="112" height="30" rx="8" class="green" opacity=".82"/>
+    <rect x="109" y="99" width="6" height="18" rx="3" fill="#e6edf9" opacity=".72"/>
+  </g>
+  <g style="animation:selected-b 4s cubic-bezier(.42,0,.58,1) infinite">
+    <rect x="154" y="135" width="132" height="30" rx="8" class="blue" opacity=".78"/>
+    <rect x="169" y="141" width="6" height="18" rx="3" class="green"/>
+  </g>
+  <g style="animation:rejected 4s cubic-bezier(.42,0,.58,1) infinite">
+    <rect x="69" y="179" width="162" height="30" rx="8" class="muted"/>
+    <rect x="84" y="185" width="6" height="18" rx="3" class="blue"/>
+  </g>
+  <g style="animation:selected-c 4s cubic-bezier(.42,0,.58,1) infinite">
+    <rect x="260" y="97" width="104" height="30" rx="8" class="amber" opacity=".76"/>
+    <rect x="275" y="103" width="6" height="18" rx="3" fill="#e6edf9" opacity=".70"/>
+  </g>
+  <g style="animation:rejected 4s cubic-bezier(.42,0,.58,1) infinite; animation-delay:.3s">
+    <rect x="251" y="185" width="128" height="30" rx="8" class="muted"/>
+    <rect x="266" y="191" width="6" height="18" rx="3" class="amber"/>
+  </g>
+
+  <ellipse cx="570" cy="150" rx="175" ry="92" fill="url(#instrumentGlow)" filter="url(#softBlur)" style="transform-origin:570px 150px; animation:breathe 4s ease-in-out infinite"/>
+  <rect x="436" y="75" width="268" height="150" rx="28" class="panel"/>
+  <rect x="456" y="94" width="228" height="112" rx="20" class="panel-2" opacity=".92"/>
+  <rect x="436" y="75" width="268" height="150" rx="28" fill="none" stroke="#58a6ff" stroke-width="1.2" opacity=".42"/>
+
+  <circle cx="512" cy="150" r="44" fill="none" stroke="#2dd48e" stroke-width="3.2" stroke-dasharray="245 75" opacity=".76" style="animation:ring 4s linear infinite"/>
+  <polygon points="474,132 550,132 532,149 492,149" fill="#161f30" opacity=".95" style="animation:irisTop 4s ease-in-out infinite"/>
+  <polygon points="492,151 532,151 550,168 474,168" fill="#161f30" opacity=".95" style="animation:irisBottom 4s ease-in-out infinite"/>
+
+  <g opacity=".76">
+    <rect x="620" y="120" width="96" height="8" rx="4" fill="#212d43"/>
+    <rect x="620" y="138" width="106" height="8" rx="4" fill="#212d43"/>
+    <rect x="620" y="156" width="116" height="8" rx="4" fill="#212d43"/>
+    <rect x="620" y="174" width="126" height="8" rx="4" fill="#212d43"/>
+  </g>
+  <g class="green" style="transform-box:fill-box; transform-origin:left center; animation:budget 4s cubic-bezier(.42,0,.58,1) infinite">
+    <rect x="590" y="120" width="66" height="8" rx="4"/>
+    <rect x="590" y="138" width="118" height="8" rx="4"/>
+    <rect x="590" y="156" width="94" height="8" rx="4"/>
+    <rect x="590" y="174" width="52" height="8" rx="4"/>
+  </g>
+  <path d="M464 102 L464 198" class="stroke-round" stroke="#ffc457" stroke-width="2.2" style="animation:scan 4s cubic-bezier(.42,0,.58,1) infinite"/>
+
+  <path d="M704 150 C770 150 810 150 862 120 S928 150 986 120" class="stroke-round" stroke="#2dd48e" stroke-width="2.1" opacity=".48"/>
+  <g class="white-stroke" fill="none" stroke-width="1.4">
+    <circle cx="862" cy="120" r="21"/>
+    <circle cx="924" cy="150" r="21"/>
+    <circle cx="986" cy="120" r="21"/>
+  </g>
+  <g class="blue" style="animation:coreLights 4s ease-in-out infinite">
+    <circle cx="862" cy="120" r="4.5"/>
+    <circle cx="924" cy="150" r="4.5"/>
+    <circle cx="986" cy="120" r="4.5"/>
+  </g>
+  <circle r="4.5" class="green" style="offset-path:path('M704 150 C770 150 810 150 862 120 S928 150 986 120'); animation:pulse 4s linear infinite"/>
+
+  <path d="M850 220 C910 204 980 214 1045 196" class="stroke-round" stroke="#ffc457" stroke-width="1.1" opacity=".24" stroke-dasharray="40 180">
+    <animate attributeName="stroke-dashoffset" from="0" to="-220" dur="4s" repeatCount="indefinite"/>
+  </path>
+</svg>

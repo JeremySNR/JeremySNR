@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/context-instrument-header.svg" alt="Animated context instrument: noisy inputs become clean adapter-ready AI context" width="100%" />
+</p>
+
 <div align="center">
 
 # 👋 Jeremy Smith
