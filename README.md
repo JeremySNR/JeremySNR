@@ -60,6 +60,17 @@ Zero-dependency TypeScript primitive for converting LLM message arrays between p
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+#### 🎨 [ashla-lightroom](https://github.com/JeremySNR/ashla-lightroom)
+AI color grading for Adobe Lightroom Classic. Describe a look in plain language, hand it a reference photo, or let it choose for you. Ashla reads your image and applies the result as a develop preset.
+
+</td>
+<td width="50%">
+
+</td>
+</tr>
 </table>
 
 ---
