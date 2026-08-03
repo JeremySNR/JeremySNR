@@ -6,10 +6,11 @@
 
 # 👋 Jeremy Smith
 
-**AI Innovation Partner** at [Travel Counsellors](https://www.travelcounsellors.com)
+**Enterprise AI strategy, platforms and multi-agent research**
 
-Leading enterprise AI strategy & product development · Building intelligent, private systems
+Building intelligent, private systems
 
+[![Blog](https://img.shields.io/badge/Blog-jeremysnr.github.io-1A1A1A?style=flat&logo=jekyll&logoColor=white)](https://jeremysnr.github.io)
 [![Email](https://img.shields.io/badge/Email-jezalexandersmith@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jezalexandersmith@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jsmithsales/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/JeremySNR)
@@ -20,9 +21,17 @@ Leading enterprise AI strategy & product development · Building intelligent, pr
 
 ### 💼 What I Do
 
-Leading **AI strategy and execution** at Travel Counsellors (£1bn+ travel tech group). Building enterprise AI products, leading multidisciplinary teams, and driving commercial outcomes through responsible innovation.
+Building **enterprise AI platforms** and researching multi-agent systems. Most of the work comes back to the same question: what can run privately, and what do you end up renting from somebody else.
 
 **Focus Areas:** Enterprise AI Platforms · LLMs & GenAI · MLOps · AI Governance · Multi-Agent Systems
+
+---
+
+### ✍️ Writing
+
+I write at **[jeremysnr.github.io](https://jeremysnr.github.io)** about AI infrastructure, sovereign compute and the industrial decisions Britain is making, or failing to make.
+
+Latest: [Your Kids Will Either Build the Next Economy or Rent It From America](https://jeremysnr.github.io/2026/08/your-kids-will-either-build-the-next-economy/)
 
 ---
 
