@@ -29,35 +29,29 @@ Building **enterprise AI platforms** and researching multi-agent systems. Most o
 
 ### 🎬 ClipForge
 
+<table>
+<tr>
+<td width="45%" valign="middle">
 <a href="https://github.com/JeremySNR/clip-forge">
   <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/hero.png" alt="ClipForge: turn long videos into viral clips on your desktop" width="100%" />
 </a>
-
-<div align="center">
+</td>
+<td width="55%" valign="middle">
 
 **The open-source Opus Clip alternative that runs on your desktop.**
+
+Podcasts, webinars and streams in, ready-to-post vertical clips out. AI-picked moments, virality scores, animated captions, auto zoom and speaker-aware reframing. Your footage stays on your machine; you bring an OpenAI key and pay cents per video, not a subscription.
 
 [![Latest release](https://img.shields.io/github/v/release/JeremySNR/clip-forge?label=release&color=10b981)](https://github.com/JeremySNR/clip-forge/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/JeremySNR/clip-forge/total?label=downloads&color=3b82f6)](https://github.com/JeremySNR/clip-forge/releases)
 [![Stars](https://img.shields.io/github/stars/JeremySNR/clip-forge?style=flat&label=stars&color=f59e0b)](https://github.com/JeremySNR/clip-forge/stargazers)
-[![CI](https://img.shields.io/github/actions/workflow/status/JeremySNR/clip-forge/ci.yml?branch=main&label=CI)](https://github.com/JeremySNR/clip-forge/actions/workflows/ci.yml)
 ![Platforms](https://img.shields.io/badge/macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
-[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/JeremySNR/clip-forge/blob/main/LICENSE)
 
-</div>
+**[Download for macOS, Windows or Linux](https://github.com/JeremySNR/clip-forge/releases/latest)** · [Source and docs](https://github.com/JeremySNR/clip-forge)
 
-Turn podcasts, webinars, streams and interviews into ready-to-post vertical clips. An LLM finds the self-contained moments and scores them for virality, then ClipForge adds karaoke captions, auto zoom, tightened cuts and speaker-aware reframing driven by on-device active speaker detection. Your footage stays on your machine. You bring an OpenAI key and pay cents per hour of video rather than a monthly subscription.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/screenshot-clips.png" alt="AI-found clips ranked by virality score" width="49%" />
-  <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/screenshot-editor.png" alt="Clip editor with live preview, caption styles and branding watermark" width="49%" />
-</p>
-
-<div align="center">
-
-**[Download the latest release](https://github.com/JeremySNR/clip-forge/releases/latest)** · [Source and docs](https://github.com/JeremySNR/clip-forge) · [Roadmap](https://github.com/JeremySNR/clip-forge#roadmap)
-
-</div>
+</td>
+</tr>
+</table>
 
 ---
 
