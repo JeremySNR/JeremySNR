@@ -27,31 +27,57 @@ Building **enterprise AI platforms** and researching multi-agent systems. Most o
 
 ---
 
-### ✍️ Writing
+### 🎬 ClipForge
 
-I write at **[jeremysnr.github.io](https://jeremysnr.github.io)** about AI infrastructure, sovereign compute and the industrial decisions Britain is making, or failing to make.
+<a href="https://github.com/JeremySNR/clip-forge">
+  <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/hero.png" alt="ClipForge: turn long videos into viral clips on your desktop" width="100%" />
+</a>
 
-Latest: [Your Kids Will Either Build the Next Economy or Rent It From America](https://jeremysnr.github.io/2026/08/your-kids-will-either-build-the-next-economy/)
+<div align="center">
+
+**The open-source Opus Clip alternative that runs on your desktop.**
+
+[![Latest release](https://img.shields.io/github/v/release/JeremySNR/clip-forge?label=release&color=10b981)](https://github.com/JeremySNR/clip-forge/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/JeremySNR/clip-forge/total?label=downloads&color=3b82f6)](https://github.com/JeremySNR/clip-forge/releases)
+[![Stars](https://img.shields.io/github/stars/JeremySNR/clip-forge?style=flat&label=stars&color=f59e0b)](https://github.com/JeremySNR/clip-forge/stargazers)
+[![CI](https://img.shields.io/github/actions/workflow/status/JeremySNR/clip-forge/ci.yml?branch=main&label=CI)](https://github.com/JeremySNR/clip-forge/actions/workflows/ci.yml)
+![Platforms](https://img.shields.io/badge/macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
+[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/JeremySNR/clip-forge/blob/main/LICENSE)
+
+</div>
+
+Turn podcasts, webinars, streams and interviews into ready-to-post vertical clips. An LLM finds the self-contained moments and scores them for virality, then ClipForge adds karaoke captions, auto zoom, tightened cuts and speaker-aware reframing driven by on-device active speaker detection. Your footage stays on your machine. You bring an OpenAI key and pay cents per hour of video rather than a monthly subscription.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/screenshot-clips.png" alt="AI-found clips ranked by virality score" width="49%" />
+  <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/screenshot-editor.png" alt="Clip editor with live preview, caption styles and branding watermark" width="49%" />
+</p>
+
+<div align="center">
+
+**[Download the latest release](https://github.com/JeremySNR/clip-forge/releases/latest)** · [Source and docs](https://github.com/JeremySNR/clip-forge) · [Roadmap](https://github.com/JeremySNR/clip-forge#roadmap)
+
+</div>
 
 ---
 
-### 🚀 Featured Projects
+### 🚀 More Projects
 
 <table>
 <tr>
 <td width="50%">
 
 #### 📦 [snug](https://github.com/JeremySNR/snug)
-Zero-dependency TypeScript primitive for fitting prioritised content into a token budget. Core of the snug ecosystem.
+Zero-dependency TypeScript primitive for fitting prioritised content into a token budget. Atomic tool pairs, required items, and a validated result you can hand straight to a model.
 
 </td>
 <td width="50%">
 
-#### 🧠 Pluribus — Multi-Agent Research
+#### 🧠 Pluribus: Multi-Agent Research
 
-**[Phase 1](https://github.com/JeremySNR/Pluribus)** · Text-level blackboard hive with cross-inhibition and a structurally protected dissenter (Carol). Agents debate, challenge each other, and converge — with one voice that cannot be silenced.
+**[Phase 1](https://github.com/JeremySNR/Pluribus)** · A text-level blackboard hive with cross-inhibition and a structurally protected dissenter (Carol). Agents debate, challenge each other and converge, with one voice that cannot be silenced.
 
-**[Phase 2](https://github.com/JeremySNR/Pluribus-P2)** · Agents communicate through a shared continuous-valued latent buffer rather than text, using BAPC codecs, TIES-Resolve conflict resolution, and damped fixed-point iteration. Emergent collective representations confirmed at GPT-2 and 7B scale.
+**Phase 2** · Agents communicate through a shared continuous-valued latent buffer rather than text, using BAPC codecs, TIES-Resolve conflict resolution and damped fixed-point iteration. Emergent collective representations confirmed at GPT-2 and 7B scale. Private for now.
 
 </td>
 </tr>
@@ -59,13 +85,13 @@ Zero-dependency TypeScript primitive for fitting prioritised content into a toke
 <td width="50%">
 
 #### 🤖 [snug-openai](https://github.com/JeremySNR/snug-openai) · [snug-anthropic](https://github.com/JeremySNR/snug-anthropic) · [snug-tiktoken](https://github.com/JeremySNR/snug-tiktoken)
-Ecosystem of adapters for the snug token budget library — drop-in fit for OpenAI, Anthropic, and tiktoken.
+Adapters for the snug token budget library. Drop-in fits for OpenAI, Anthropic and tiktoken.
 
 </td>
 <td width="50%">
 
 #### 🔀 [converge](https://github.com/JeremySNR/converge)
-Zero-dependency TypeScript primitive for converting LLM message arrays between provider formats. OpenAI ↔ Anthropic ↔ Gemini. Pure data transformation, no API calls.
+Zero-dependency TypeScript primitive for converting LLM message arrays between provider formats. OpenAI, Anthropic and Gemini, in either direction. Pure data transformation, no API calls.
 
 </td>
 </tr>
@@ -73,14 +99,25 @@ Zero-dependency TypeScript primitive for converting LLM message arrays between p
 <td width="50%">
 
 #### 🎨 [ashla-lightroom](https://github.com/JeremySNR/ashla-lightroom)
-AI color grading for Adobe Lightroom Classic. Describe a look in plain language, hand it a reference photo, or let it choose for you. Ashla reads your image and applies the result as a develop preset.
+AI colour grading for Adobe Lightroom Classic. Describe a look in plain language, hand it a reference photo, or let it choose for you. Ashla reads your image and applies the result as a develop preset.
 
 </td>
 <td width="50%">
 
+#### 🏛️ [Project Foundry](https://github.com/JeremySNR/Project-foundry)
+The governance layer for AI coding agents. Raw tickets in, reviewed pull requests out. Every step is policy-gated, human-approved and audited, with the agent as the muscle and Foundry as the brain and the seatbelt.
+
 </td>
 </tr>
 </table>
+
+---
+
+### ✍️ Writing
+
+I write at **[jeremysnr.github.io](https://jeremysnr.github.io)** about AI infrastructure, sovereign compute and the industrial decisions Britain is making, or failing to make.
+
+Latest: [Your Kids Will Either Build the Next Economy or Rent It From America](https://jeremysnr.github.io/2026/08/your-kids-will-either-build-the-next-economy/)
 
 ---
 
