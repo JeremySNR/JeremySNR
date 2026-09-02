@@ -111,7 +111,7 @@ The governance layer for AI coding agents. Raw tickets in, reviewed pull request
 
 I write at **[jeremysnr.github.io](https://jeremysnr.github.io)** about AI infrastructure, sovereign compute and the industrial decisions Britain is making, or failing to make.
 
-Latest: [Your Kids Will Either Build the Next Economy or Rent It From America](https://jeremysnr.github.io/2026/08/your-kids-will-either-build-the-next-economy/)
+Latest: [Now we have the full details, here's what happened, and here's why it terrifies me](https://jeremysnr.github.io/2026/09/now-we-have-the-full-details/)
 
 ---
 
