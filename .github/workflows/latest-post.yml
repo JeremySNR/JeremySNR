@@ -1,0 +1,37 @@
+name: Update latest post
+
+# Keeps the "Latest:" line under Writing in README.md pointing at the newest
+# post on jeremysnr.github.io. Posts publish at 08:00 UTC, so this runs shortly
+# after; it can also be triggered by hand from the Actions tab.
+
+on:
+  schedule:
+    - cron: "17 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: latest-post
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rewrite the Latest line from the feed
+        run: python3 scripts/update_latest_post.py
+
+      - name: Commit and push if it changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Update latest article link"
+          git push
