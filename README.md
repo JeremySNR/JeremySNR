@@ -27,27 +27,27 @@ Building **enterprise AI platforms** and researching multi-agent systems. Most o
 
 ---
 
-### 🎬 ClipForge
+### 🎬 Cutawan
 
 <table>
 <tr>
 <td width="45%" valign="middle">
-<a href="https://github.com/JeremySNR/clip-forge">
-  <img src="https://raw.githubusercontent.com/JeremySNR/clip-forge/main/.github/assets/hero.png" alt="ClipForge: turn long videos into viral clips on your desktop" width="100%" />
+<a href="https://github.com/JeremySNR/cutawan">
+  <img src="https://raw.githubusercontent.com/JeremySNR/cutawan/main/.github/assets/cutawan-hero.png" alt="Cutawan: turn long videos into captioned shorts on your desktop" width="100%" />
 </a>
 </td>
 <td width="55%" valign="middle">
 
-**The open-source Opus Clip alternative that runs on your desktop.**
+**The free, open-source desktop alternative to Opus Clip.**
 
-Podcasts, webinars and streams in, ready-to-post vertical clips out. AI-picked moments, virality scores, animated captions, auto zoom and speaker-aware reframing. Your footage stays on your machine; you bring an OpenAI key and pay cents per video, not a subscription.
+Podcasts, webinars, streams and interviews in, ready-to-post vertical clips out. AI-picked moments, virality scores, animated captions, auto zoom and speaker-aware reframing. Your footage stays on your machine: sign in with ChatGPT through Codex, point it at any OpenAI-compatible API, or caption a whole video locally with no AI connection at all. No subscription, no upload, no cap on minutes.
 
-[![Latest release](https://img.shields.io/github/v/release/JeremySNR/clip-forge?label=release&color=10b981)](https://github.com/JeremySNR/clip-forge/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/JeremySNR/clip-forge/total?label=downloads&color=3b82f6)](https://github.com/JeremySNR/clip-forge/releases)
-[![Stars](https://img.shields.io/github/stars/JeremySNR/clip-forge?style=flat&label=stars&color=f59e0b)](https://github.com/JeremySNR/clip-forge/stargazers)
+[![Latest release](https://img.shields.io/github/v/release/JeremySNR/cutawan?label=release&color=10b981)](https://github.com/JeremySNR/cutawan/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/JeremySNR/cutawan/total?label=downloads&color=3b82f6)](https://github.com/JeremySNR/cutawan/releases)
+[![Stars](https://img.shields.io/github/stars/JeremySNR/cutawan?style=flat&label=stars&color=f59e0b)](https://github.com/JeremySNR/cutawan/stargazers)
 ![Platforms](https://img.shields.io/badge/macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
 
-**[Download for macOS, Windows or Linux](https://github.com/JeremySNR/clip-forge/releases/latest)** · [Source and docs](https://github.com/JeremySNR/clip-forge)
+**[Download for macOS, Windows or Linux](https://github.com/JeremySNR/cutawan/releases/latest)** · [cutawan.xyz](https://cutawan.xyz) · [Source and docs](https://github.com/JeremySNR/cutawan)
 
 </td>
 </tr>
