@@ -147,7 +147,7 @@ Podcasts, webinars, streams and interviews in, ready-to-post vertical clips out.
 
 **Shot-level footage search for AI video editors.** It watches your footage once, on your own hardware, and builds an index agents can query over MCP in milliseconds. *"A two-second cutaway of a yellow cab, panning left, no faces."* Exports to OTIO, FCPXML and EDL, and hands shots straight to Cutawan.
 
-[Site](https://metachlorian.vercel.app) · [Community index](https://github.com/JeremySNR/Metachlorian-community)
+[Site](https://www.metachlorian.xyz) · [Community index](https://github.com/JeremySNR/Metachlorian-community)
 
 </td>
 <td width="50%" valign="top">
